@@ -1,0 +1,349 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Styling */
+
+.magicNavbar {
+  margin-top: 0.1em;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: linear-gradient(135deg, rgb(118, 19, 17), rgb(0, 0, 0));
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.magicNavbar::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(201, 200, 200, 0.2) 10%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.magicNavbar:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.magicLink {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: transform 0.3s ease-in-out, color 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.magicLink::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  top: 0;
+  left: -100%;
+  transition: left 0.3s ease-in-out;
+}
+
+.magicLink:hover::before {
+  left: 0;
+}
+
+.magicLink:hover {
+  transform: scale(1.1);
+  color: #f39c12;
+}
+
+.magicLink svg {
+  font-size: 20px;
+}
+
+  /* Hero Section */
+/* Grid Container */
+.grid-container {
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Individual Card */
+.grid-item {
+  background: linear-gradient(185deg,black,white);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.grid-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+/* Shoe Div */
+.featShoe{
+  height: 200px;
+   width: 300px;
+  border: 2px dotted darkcyan;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.span{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* Shoe Image */
+.shoe-img {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 200px;
+  margin: auto;
+ 
+  transition: transform 0.6s ease-in-out;
+  transform-origin: center;
+  perspective: 1000px;
+}
+
+.grid-item:hover .shoe-img {
+  transform: rotateY(15deg) rotateX(-10deg) scale(1.1);
+}
+
+/* Title */
+.shoe-title {
+  font-size: 18px;
+  margin: 15px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Button */
+/*.shop-btn {
+  position: relative;
+  z-index: 1;
+  
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  color: black;
+  text-transform: uppercase;
+  background: #edeff1;
+ 
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: background 0.3s ease-in-out;
+}
+.shop-btn::after{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: aquamarine;
+  transition: width 0.6s ease-in-out;
+}
+.shop-btn:hover::after{
+  width: 100%;
+    
+}
+*/
+
+/* Button */
+.shop-btn {
+  position: relative;
+  z-index: 1;
+  
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  color: black;
+  text-transform: uppercase;
+  background: #edeff1;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  overflow: hidden; /* Prevent overflow of the effect */
+  transition: color 0.6s ease-in-out, background 0.3s ease-in-out;
+}
+.shop-btn:hover{
+  color: white;
+}
+.shop-btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 0%;
+  height: 0%;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  transition: color 1s ease-in-out, 1s ease-in-out, height 1s ease-in-out;
+}
+
+.shop-btn:hover::after {
+  width: 150%;
+  height: 150%;
+  
+}
+
+
+/* Arrow Icon */
+.arrow-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: #007bff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.grid-item:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* Slider */
+.corCont{
+  margin-top: 0.1em !important;
+  height: 80vh;
+  width: 80% !important;
+  margin: auto;
+}
+.corItem img{
+  height: 530px;
+  width: 80%;
+}
+.corCap h5,
+.corCap p{
+  color: white;
+  letter-spacing: 2px;
+}
+
+
+
+/*  Mens Shoes ShowCase */
+
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.shoe-card {
+ 
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  overflow: hidden;
+}
+.shoe3{
+  height: 200px;
+  width: 250px;
+}
+.shoe-card:hover {
+  /* transform: translateY(-10px); */
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.shoe-card img {
+  
+  /* filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5)); */
+  height: 210px;
+  margin-bottom: 0.5em;
+  width: 100%; 
+  border-radius: 10px;
+  max-width: 220px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.shoe-card:hover img {
+  transform: rotate(-8deg) translateY(-10px) scale(1.2);
+}
+
+.shoe-card h3 {
+  margin: 15px 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.shoe-card p {
+  color: #777;
+  font-size: 14px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin: 10px 0;
+}
+
+.buy-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: black;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-decoration: none;
+}
+
+.buy-btn:hover {
+  background: darkblue;
+}
+
+
+/* png */
+
