@@ -105,6 +105,9 @@
   height: 200px;
    width: 300px;
   border: 2px dotted darkcyan;
+  box-shadow: 
+    0px 0px 15px 5px white,   /* Outer shadow */
+    inset 0px 0px 10px 5px black;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -147,43 +150,7 @@
   color: #333;
 }
 
-/* Button */
-/*.shop-btn {
-  position: relative;
-  z-index: 1;
-  
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 10px;
-  color: black;
-  text-transform: uppercase;
-  background: #edeff1;
- 
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  transition: background 0.3s ease-in-out;
-}
-.shop-btn::after{
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 0%;
-  height: 100%;
-  border-radius: 10px;
-  background-color: aquamarine;
-  transition: width 0.6s ease-in-out;
-}
-.shop-btn:hover::after{
-  width: 100%;
-    
-}
-*/
+
 
 /* Button */
 .shop-btn {
@@ -217,7 +184,7 @@
   background-color: rgb(0, 0, 0);
   border-radius: 10px;
   transform: translate(-50%, -50%);
-  transition: color 1s ease-in-out, 1s ease-in-out, height 1s ease-in-out;
+  transition: color 1s ease-in-out, width 0.8s ease-in-out, height 0.8s ease-in-out;
 }
 
 .shop-btn:hover::after {
@@ -251,6 +218,11 @@
 .corItem img{
   height: 530px;
   width: 80%;
+  transition: transform 0.6s ease-in-out;
+}
+/* Hero Hover */
+.corItem img:hover{
+  transform: scale(1.1);
 }
 .corCap h5,
 .corCap p{
@@ -300,6 +272,7 @@
   width: 100%; 
   border-radius: 10px;
   max-width: 220px;
+  
   transition: transform 0.4s ease-in-out;
 }
 
@@ -329,7 +302,7 @@
 .buy-btn {
   display: inline-block;
   padding: 10px 20px;
-  background: black;
+  background: black !important;
   color: #fff;
   text-transform: uppercase;
   font-size: 14px;
@@ -341,9 +314,182 @@
 }
 
 .buy-btn:hover {
-  background: darkblue;
+  background: darkblue !important;
 }
 
 
 /* png */
+
+/* Footer */
+
+.footer {
+  background-color: #111827;
+  color: white;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+    text-align: left;
+  }
+}
+
+.footer-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.footer-text {
+  color: #9ca3af;
+}
+
+.footer-heading {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-social {
+    justify-content: flex-start;
+  }
+}
+
+.footer-social a {
+  color: #9ca3af;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-social a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  border-top: 1px solid #374151;
+  padding-top: 1rem;
+}
+
+
+/*  WomenShoe */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
+}
+.Womencard img{
+  transition: transform 0.6s ease-in-out;
+  margin-bottom: 0.2em;
+}
+
+.Womencard img:hover{
+  transform: scale(1.1);
+}
+.Womencard h3{
+  margin-top: 0.5em;
+  color: darkblue;
+}
+
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.shoe-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e44d26;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  
+}
+
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgb(114, 17, 85);
+  color: white;
+}
+
+.buy-btn {
+  background: #e44d26;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.buy-btn:hover {
+  background: #c4371d;
+}
 
