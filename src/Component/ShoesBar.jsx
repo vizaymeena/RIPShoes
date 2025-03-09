@@ -1,13 +1,14 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import './Component.css';
 // React icons
 import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from 'react-icons/fa';
 // Buttons
 import { Button } from 'react-bootstrap';
 
-
+import newRed from '../assets/Kidos/newred.jpg'
 import goldenshoe2 from '../assets/Images/men3.jpg'; // Second shoe image
 import goldenshoe from '../assets/Images/red.jpg'; // Third shoe image
 import goldenshoe3 from '../assets/Images/men.jpg'
@@ -57,7 +58,7 @@ export let Slider=()=>{
       <Carousel.Item className='corItem'>
         <img
           className="d-block w-100"
-          src={goldenshoe}
+          src={newRed}
           alt="First slide"
         />
         <Carousel.Caption className='corCap'>
@@ -73,7 +74,7 @@ export let Slider=()=>{
         />
         <Carousel.Caption className='corCap'>
           <h5>NIKE's JAGUAR </h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Roar of Jaguar From Wakanda.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className='corItem'>
@@ -85,7 +86,7 @@ export let Slider=()=>{
         <Carousel.Caption className='corCap'>
           <h5>NIKE's WHITE TIGER</h5>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            White Tiger Flawless.
           </p>
         </Carousel.Caption>
       </Carousel.Item>
@@ -93,44 +94,65 @@ export let Slider=()=>{
     </>
   )
 }
+/* HeroSection */
+export let HeroSection = () => {
+  const shoes = [
+    {
+      id: 1,
+      name: "Nike RED VELVET",
+      img: newRed,
+      colors: ["Red", "Black", "White"],
+      sizes: [6, 7, 8, 9, 10, 11],
+    },
+    {
+      id: 2,
+      name: "NIKE's JAGUAR",
+      img: goldenshoe2,
+      colors: ["Gold", "Black", "Blue"],
+      sizes: [6, 7, 8, 9, 10, 11],
+    },
+    {
+      id: 3,
+      name: "NIKE's WHITE TIGER",
+      img: goldenshoe3,
+      colors: ["White", "Black", "Gray"],
+      sizes: [6, 7, 8, 9, 10, 11],
+    },
+  ];
 
+  return (
+    <div className="grid-container">
+      {shoes.map((shoe) => (
+        <div className="grid-item" key={shoe.id}>
+          <i className="fas fa-arrow-right arrow-icon"></i>
+          <div className="featShoe">
+            <img src={shoe.img} alt={shoe.name} className="shoe-img" />
+          </div>
+          <h2 className="shoe-title">{shoe.name}</h2>
 
-export let HeroSection=()=>{
-  return(
-    <>
-     <div className="grid-container">
-        {/* <!-- Card 1 --> */}
-        <div className="grid-item">
-            <i className="fas fa-arrow-right arrow-icon"></i>
-            <div className='featShoe'> 
-              <img src={goldenshoe} alt="Shoe 1" className="shoe-img"/> 
-            </div>
-            <h2 className="shoe-title">Nike RED VELVET</h2>
-            <button className="shop-btn">Shop Now</button>
+          {/* Shoe Color Selection */}
+          <label className="label">Color:</label>
+          <select className="select-box">
+            {shoe.colors.map((color, index) => (
+              <option key={index} value={color}>
+                {color}
+              </option>
+            ))}
+          </select>
+
+          {/* Shoe Size Selection */}
+          <label className="label">Size:</label>
+          <select className="select-box">
+            {shoe.sizes.map((size, index) => (
+              <option key={index} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+
+          <button className="shop-btn">Shop Now</button>
         </div>
-
-        {/* <!-- Card 2 --> */}
-        <div className="grid-item">
-            <i className="fas fa-arrow-right arrow-icon"></i>
-            <div className='featShoe'> 
-              <img src={goldenshoe2} alt="Shoe 2" className="shoe-img"/>
-             </div>
-            <h2 className="shoe-title">NIKE's JAGUAR</h2>
-            <button className="shop-btn">Shop Now</button>
-        </div>
-
-        {/* <!-- Card 3 --> */}
-        <div className="grid-item">
-            <i className="fas fa-arrow-right arrow-icon"></i>
-            <div className='featShoe'> 
-              <img src={goldenshoe3} alt="Shoe 3" className="shoe-img"/> 
-            </div>
-            <h2 className="shoe-title">NIKE's WHITE TIGER</h2>
-            <button className="shop-btn">Shop Now</button>
-        </div>
-
+      ))}
     </div>
-
-    </>
-  )
-}
+  );
+};

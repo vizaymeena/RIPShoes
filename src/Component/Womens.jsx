@@ -1,5 +1,5 @@
 import "./Component.css";
-import ws1 from '../assets/Images/Ws3.jpg';
+import ws1 from '../assets/Images/Heels.jpg';
 import ws2 from '../assets/Images/Ws8.jpg';
 import ws3 from '../assets/Images/Ws4.jpg';
 import ws5 from '../assets/Images/Ws5.jpg';
@@ -19,6 +19,8 @@ export default function WomenShoe() {
   ];
 
   return (
+    <>
+    <h1>Womens</h1>
     <div className="grid-container">
       {shoes.map((shoe) => (
         <div key={shoe.id} className="card Womencard">
@@ -37,9 +39,10 @@ export default function WomenShoe() {
               ))}
             </select>
           </div>
-          <button className="buy-btn">Buy Now</button>
+          <button className="womenBuy">Buy Now</button>
         </div>
       ))}
     </div>
+    </>
   );
 }

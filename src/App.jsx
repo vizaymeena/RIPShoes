@@ -7,6 +7,7 @@ import { MenShoes } from './Component/Mens'
 import Footer from './Component/ShoeFooter'
 import WomenShoe from './Component/Womens'
 
+
 function App() {
   
 
@@ -17,6 +18,7 @@ function App() {
      <HeroSection/>
      <MenShoes/>
      <WomenShoe/>
+    
      <Footer/>
     </>
   )
