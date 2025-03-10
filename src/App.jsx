@@ -6,6 +6,7 @@ import { Slider } from './Component/ShoesBar'
 import { MenShoes } from './Component/Mens'
 import Footer from './Component/ShoeFooter'
 import WomenShoe from './Component/Womens'
+import { KidosSection } from './Component/Kidos'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
      <Slider/>
      <HeroSection/>
      <MenShoes/>
+     <KidosSection/>
      <WomenShoe/>
     
      <Footer/>
