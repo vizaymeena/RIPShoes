@@ -7,6 +7,7 @@ import { MenShoes } from './Component/Mens'
 import Footer from './Component/ShoeFooter'
 import WomenShoe from './Component/Womens'
 import { KidosSection } from './Component/Kidos'
+import { RegisterAccount } from './Component/Signup'
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
      <MenShoes/>
      <KidosSection/>
      <WomenShoe/>
+
+     <RegisterAccount/>
     
      <Footer/>
     </>
