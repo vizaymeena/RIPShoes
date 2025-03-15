@@ -10,42 +10,42 @@ export let MenShoes=()=>{
     return(
         <>
 <div><h1>MENS : A Common Man Needs</h1></div>
-<div class="container">
+<div className="container">
         {/* <!-- Shoe Card 1 --> */}
         
-        <div class="shoe-card">
+        <div className="shoe-card">
             <img  src={air1} alt="Shoe 1"/>
             <h3>Nike Air Max</h3>
             <p>Premium quality running shoes</p>
-            <div class="price">₹11,120</div>
-            <a href="#" class="buy-btn">Buy Now</a>
+            <div className="price">₹11,120</div>
+            <button className="buy-btn">Buy Now</button>
         </div>
 
         {/* <!-- Shoe Card 2 --> */}
-        <div class="shoe-card">
+        <div className="shoe-card">
             <img src={air2} alt="Shoe 2"/>
             <h3>Adidas Ultraboost</h3>
             <p>Ultimate comfort and style</p>
-            <div class="price">₹15,150</div>
-            <a href="#" class="buy-btn">Buy Now</a>
+            <div className="price">₹15,150</div>
+            <button className="buy-btn">Buy Now</button>
         </div>
 
         {/* <!-- Shoe Card 3 --> */}
-        <div class="shoe-card">
+        <div className="shoe-card">
             <img className='shoe3' src={air3} alt="Shoe 3"/>
             <h3>Puma RS-X</h3>
             <p>Modern sneakers for daily wear</p>
-            <div class="price">₹11,110</div>
-            <a href="#" class="buy-btn">Buy Now</a>
+            <div className="price">₹11,110</div>
+            <button className="buy-btn">Buy Now</button>
         </div>
 
         {/* <!-- Shoe Card 4 --> */}
-        <div class="shoe-card">
+        <div className="shoe-card">
             <img src={air4} alt="Shoe 4"/>
             <h3>Reebok Classic</h3>
             <p>Vintage style with a modern twist</p>
-            <div class="price">₹10,100</div>
-            <a href="#" class="buy-btn">Buy Now</a>
+            <div className="price">₹10,100</div>
+            <button className="buy-btn">Buy Now</button>
         </div>
     </div>
         

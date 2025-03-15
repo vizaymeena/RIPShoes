@@ -1,100 +1,65 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
+import "./Component.css";
+
+// Slider
 import Carousel from 'react-bootstrap/Carousel';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import './Component.css';
-// React icons
-import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from 'react-icons/fa';
-// Buttons
-import { Button } from 'react-bootstrap';
-
-import newRed from '../assets/Kidos/newred.jpg'
-import goldenshoe2 from '../assets/Images/men3.jpg'; // Second shoe image
-import goldenshoe from '../assets/Images/red.jpg'; // Third shoe image
-import goldenshoe3 from '../assets/Images/men.jpg'
-
-
-
+import newRed from '../assets/Kidos/newred.jpg';
+import goldenshoe2 from '../assets/Images/men3.jpg';
+import goldenshoe3 from '../assets/Images/men.jpg';
 
 
 
 export let NavShoesBar = () => {
   return (
-    <>
-
-      {/* Navigation Bar */}
-       
-        
-         
-
-          <div>
-            
-            {/* Navbar Description */}
-           <nav className='magicNavbar'>
-             <Link className='magicLink' to='/'><FaHome /> Home</Link>
-             <Link className='magicLink' to='/Mens'><FaMale /> Mens</Link>
-             <Link className='magicLink' to='/Womens'><FaFemale /> Womens</Link>
-             <Link className='magicLink' to='/Kids'><FaChild /> Kids</Link>
-             <Link className='magicLink' to='/About'><FaInfoCircle /> About</Link>
-             <Link className='magicLink' to='/Login'><FaUser /> Login</Link>
-           </nav>
-          </div>
-          <div>
-            <span className='userIcon'><i></i></span>
-            <span className='userAccess'></span>
-          </div>
-        
-       
-     
-  
-    </>
+    <nav className="magicNavbar">
+      <Link className="magicLink" to="/"><FaHome /> Home</Link>
+      <Link className="magicLink" to="/Mens"><FaMale /> Mens</Link>
+      <Link className="magicLink" to="/Womens"><FaFemale /> Womens</Link>
+      <Link className="magicLink" to="/Kidos"><FaChild /> Kids</Link>
+      <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link> 
+      <Link className="magicLink" to="/Signup"><FaUser /> Login</Link>
+    </nav>
   );
 };
 
-export let Slider=()=>{
-  return(
-    <>
-       <Carousel className='corCont' data-bs-theme="dark">
+
+// Slider
+
+export let Slider = () => {
+  return (
+    <Carousel className='corCont' data-bs-theme="dark">
       <Carousel.Item className='corItem'>
-        <img
-          className="d-block w-100"
-          src={newRed}
-          alt="First slide"
-        />
+        <img className="d-block w-100" src={newRed} alt="First slide" />
         <Carousel.Caption className='corCap'>
           <h5>RED VELVET NIKE</h5>
-          <p>Most stunning product of the month .</p>
+          <p>Most stunning product of the month.</p>
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item className='corItem'>
-        <img
-          className="d-block w-100"
-          src={goldenshoe2}
-          alt="Second slide"
-        />
+        <img className="d-block w-100" src={goldenshoe2} alt="Second slide" />
         <Carousel.Caption className='corCap'>
-          <h5>NIKE's JAGUAR </h5>
+          <h5>NIKE's JAGUAR</h5>
           <p>Roar of Jaguar From Wakanda.</p>
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item className='corItem'>
-        <img
-          className="d-block w-100"
-          src={goldenshoe3}
-          alt="Third slide"
-        />
+        <img className="d-block w-100" src={goldenshoe3} alt="Third slide" />
         <Carousel.Caption className='corCap'>
           <h5>NIKE's WHITE TIGER</h5>
-          <p>
-            White Tiger Flawless.
-          </p>
+          <p>White Tiger Flawless.</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    </>
-  )
-}
-/* HeroSection */
+  );
+};
+
+
+// Hero Section
+
 export let HeroSection = () => {
   const shoes = [
     {
@@ -124,7 +89,6 @@ export let HeroSection = () => {
     <div className="grid-container">
       {shoes.map((shoe) => (
         <div className="grid-item" key={shoe.id}>
-          <i className="fas fa-arrow-right arrow-icon"></i>
           <div className="featShoe">
             <img src={shoe.img} alt={shoe.name} className="shoe-img" />
           </div>
