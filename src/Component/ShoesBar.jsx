@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
 import "./Component.css";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Slider
 import Carousel from 'react-bootstrap/Carousel';
@@ -9,17 +12,49 @@ import newRed from '../assets/Kidos/newred.jpg';
 import goldenshoe2 from '../assets/Images/men3.jpg';
 import goldenshoe3 from '../assets/Images/men.jpg';
 
-
+// Navbar
 
 export let NavShoesBar = () => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")) || null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setUser(JSON.parse(localStorage.getItem("loggedInUser")) || null);
+    };
+
+    // Listen for storage changes
+    window.addEventListener("storage", handleStorageChange);
+    
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  // Logout Function
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    setUser(null);
+    navigate("/Login");
+  };
+
   return (
     <nav className="magicNavbar">
       <Link className="magicLink" to="/"><FaHome /> Home</Link>
       <Link className="magicLink" to="/Mens"><FaMale /> Mens</Link>
       <Link className="magicLink" to="/Womens"><FaFemale /> Womens</Link>
       <Link className="magicLink" to="/Kidos"><FaChild /> Kids</Link>
-      <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link> 
-      <Link className="magicLink" to="/Signup"><FaUser /> Login</Link>
+      <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link>
+
+      {/* Display user info if logged in */}
+      {user ? (
+        <div className="userSection">
+          <span className="userInfo">{user.name} <br /> ({user.username})</span>
+          <button onClick={handleLogout} className="logoutBtn">Logout</button>
+        </div>
+      ) : (
+        <Link className="magicLink" to="/Login"><FaUser /> Login</Link>
+      )}
     </nav>
   );
 };

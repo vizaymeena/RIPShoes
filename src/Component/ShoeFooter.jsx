@@ -1,43 +1,56 @@
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import "./Component.css";
+import React from "react";
 import { Link } from "react-router-dom";
+import "./Component.css";
 
-export default function Footer() {
+const ShoeFooter = () => {
   return (
     <footer className="footer">
-      <div className="container">
-        {/* Company Info */}
-        <div>
-          <h2 className="title">Nicee's</h2>
-          <p className="text">Only the bearear knows</p>
+      <div className="footer-container">
+        {/* Brand Section */}
+        <div className="footer-section">
+          <h2 className="footer-title">ShoeMart</h2>
+          <p>Your go-to destination for stylish and comfortable shoes.</p>
         </div>
-        
-        {/* Navigation Links */}
-        <div>
-          <h3 className="heading">Quick Links</h3>
-          <ul className="links">
-            <li style={{listStyle:'none'}}><Link style={{textDecoration:'none'}} to='/'>Home</Link></li>
-            <li style={{listStyle:'none'}}><Link style={{textDecoration:'none'}} to='/'>About</Link></li>
-            <li style={{listStyle:'none'}}><Link style={{textDecoration:'none'}} to='/'>Services</Link></li>
-            <li style={{listStyle:'none'}}><Link style={{textDecoration:'none'}} to='/'>Contact</Link></li>
+
+        {/* Quick Links */}
+        <div className="footer-section">
+          <h3>Nav Links</h3>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/shop">Shop</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
-        
-        {/* Social Media Links */}
-        <div>
-          <h3 className="heading">Follow Us</h3>
-          <div className="social">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaLinkedinIn /></a>
-            <a href="#"><FaInstagram /></a>
+
+        {/* Customer Support */}
+        <div className="footer-section">
+          <h3>Customer Support</h3>
+          <ul>
+            <li><Link to="/faqs">FAQs</Link></li>
+            <li><Link to="/returns">Returns</Link></li>
+            <li><Link to="/shipping">Shipping</Link></li>
+            <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+          </ul>
+        </div>
+
+        {/* Newsletter Subscription */}
+        <div className="footer-section">
+          <h3>Stay Connected</h3>
+          <p>Subscribe for the latest offers and updates.</p>
+          <div className="newsletter">
+            <input type="email" placeholder="Enter your email" />
+            <button>Subscribe</button>
           </div>
         </div>
       </div>
-      
-      <div className="bottom">
-        &copy; {new Date().getFullYear()} YourCompany. All rights reserved.
+
+      {/* Copyright Section */}
+      <div className="footer-bottom">
+        &copy; {new Date().getFullYear()} ShoeMart. All Rights Reserved.
       </div>
     </footer>
   );
-}
+};
+
+export default ShoeFooter;
