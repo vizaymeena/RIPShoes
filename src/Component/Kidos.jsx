@@ -1,7 +1,10 @@
 import { useMemo } from "react";
+// Images
 import Kid2 from "../assets/Kidos/kidu1.jpg";
 import Kid3 from "../assets/Kidos/kidu2.jpg";
 import Kid4 from "../assets/Kidos/kid3.jpg";
+// Importing Link
+import { Link } from "react-router-dom";
 
 export const KidosSection = () => {
     const shoes = useMemo(() => [
@@ -19,7 +22,7 @@ export const KidosSection = () => {
                         <img src={image} alt={name} loading="lazy" />
                         <h3>{name}</h3>
                         <p>Price: ₹{price}</p>
-                        <button>Shop Now</button>
+                       <Link to='/Receipt'> <button>Shop Now</button> </Link>
                     </div>
                 ))}
             </div>

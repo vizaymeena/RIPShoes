@@ -12,6 +12,11 @@ import newRed from '../assets/Kidos/newred.jpg';
 import goldenshoe2 from '../assets/Images/men3.jpg';
 import goldenshoe3 from '../assets/Images/men.jpg';
 
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+
 // Navbar
 
 export let NavShoesBar = () => {
@@ -62,33 +67,40 @@ export let NavShoesBar = () => {
 
 // Slider
 
-export let Slider = () => {
+
+export let SSlider = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+  };
+
   return (
-    <Carousel className='corCont' data-bs-theme="dark">
-      <Carousel.Item className='corItem'>
-        <img className="d-block w-100" src={newRed} alt="First slide" />
-        <Carousel.Caption className='corCap'>
-          <h5>RED VELVET NIKE</h5>
-          <p>Most stunning product of the month.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-
-      <Carousel.Item className='corItem'>
-        <img className="d-block w-100" src={goldenshoe2} alt="Second slide" />
-        <Carousel.Caption className='corCap'>
-          <h5>NIKE's JAGUAR</h5>
-          <p>Roar of Jaguar From Wakanda.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-
-      <Carousel.Item className='corItem'>
-        <img className="d-block w-100" src={goldenshoe3} alt="Third slide" />
-        <Carousel.Caption className='corCap'>
-          <h5>NIKE's WHITE TIGER</h5>
-          <p>White Tiger Flawless.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <div className="slider-container">
+      {/* ...setting is used to pass all the properties from an object (settings) into the <Slider> component. */}
+      <Slider {...settings}>
+        <div>
+          <img src={newRed} alt="Shoe 1" className="slider-image" />
+          <h3>Red Velvet Nike</h3>
+          <p>Stylish and comfortable sneaker for daily wear.</p>
+        </div>
+        <div>
+          <img src={goldenshoe2} alt="Shoe 2" className="slider-image" />
+          <h3>Nike Air Zoom</h3>
+          <p>Perfect for running with high-end cushioning.</p>
+        </div>
+        <div>
+          <img src={goldenshoe3} alt="Shoe 3" className="slider-image" />
+          <h3>Nike Classic</h3>
+          <p>A timeless design with durability and comfort.</p>
+        </div>
+      </Slider>
+    </div>
   );
 };
 
