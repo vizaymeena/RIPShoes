@@ -4,21 +4,21 @@
       "id": 1,
       "name": "Vijay Meena",
       "email": "vijay@gmail.com",
-      "password": "admin123",
+      "password": "vijay123",
       "role": "admin"
     },
     {
       "id": 2,
       "name": "Himanshu",
       "email": "himanshu@gmail;.com",
-      "password": "user123",
+      "password": "heman123",
       "role": "user"
     },
     {
       "id": 3,
       "name": "Jatin",
       "email": "jatin@gmail.com",
-      "password": "user456",
+      "password": "jatin",
       "role": "user"
     }
   ],
@@ -32,39 +32,6 @@
       "Contact": 124,
       "Address": "Bagoniya",
       "price": 35000
-    },
-    {
-      "id": "36b9",
-      "name": "",
-      "email": "",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "ShoeQuantity": "",
-      "contact": "",
-      "address": "",
-      "price": ""
-    },
-    {
-      "id": "e8f0",
-      "name": "",
-      "email": "",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "ShoeQuantity": "",
-      "contact": "",
-      "address": "",
-      "price": ""
-    },
-    {
-      "id": "bf12",
-      "name": "vijay",
-      "email": "",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": "5",
-      "contact": "",
-      "address": "",
-      "price": ""
     },
     {
       "id": "34a5",
@@ -122,17 +89,6 @@
       "price": null
     },
     {
-      "id": "6cd3",
-      "name": "",
-      "email": "",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": 2,
-      "contact": "7987725298",
-      "address": "bagonoya",
-      "price": null
-    },
-    {
       "id": "e9fc",
       "name": "Allu Arjun",
       "email": "rajpatidar@gmail.com",
@@ -142,6 +98,17 @@
       "contact": "7987725298",
       "address": "bagonoya",
       "price": null
+    },
+    {
+      "id": "7319",
+      "name": "Vijay Dinnnanath Chouhan",
+      "email": "vizaymeena@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": "2",
+      "contact": "100",
+      "address": "Bhopal",
+      "price": 5000
     }
   ]
 }

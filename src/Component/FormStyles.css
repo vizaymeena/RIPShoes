@@ -45,6 +45,15 @@ input {
     font-size: 1rem;
 }
 
+.Buttons{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .submitBtn {
     margin-top: 1.5rem;
     padding: 10px;
@@ -64,6 +73,24 @@ input {
 .submitBtn:hover {
     background-color: #09500f;
 
+}
+.loginButton{
+    margin-top: 1.5rem;
+    padding: 10px;
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid black;
+    /* border: none; */
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s,color 0.3s ease-in-out;
+}
+.loginButton:hover{
+ color: white;
 }
 
 

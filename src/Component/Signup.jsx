@@ -12,6 +12,7 @@ let SignUp = () => {
   });
 
   let navigate = useNavigate();
+  let navigate2Login = useNavigate()
 
   // Handle input changes
   let inpChange = (e) => {
@@ -33,6 +34,13 @@ let SignUp = () => {
     alert("Signup successful! Redirecting to login...");
     navigate("/Login");
   };
+// If already a user
+let Go2Login=()=>{
+
+  navigate2Login("/Login")
+
+}
+
 
   return (
     <div className="signContainer">
@@ -53,8 +61,14 @@ let SignUp = () => {
 
           <label htmlFor="contact">Contact</label>
           <input onChange={inpChange} name="contact" id="contact" type="tel" placeholder="Enter Your Contact Number" required />
-
+    
+        <div className="Buttons">
           <button type="submit" className="submitBtn">Sign Up</button>
+          <button onClick={Go2Login} className="loginButton">Login</button>
+        </div>
+
+        
+          
         </form>
       </div>
     </div>

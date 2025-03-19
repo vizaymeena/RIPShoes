@@ -56,7 +56,7 @@ export let NavShoesBar = () => {
       {/* Display user info if logged in */}
       {user ? (
         <div className="userSection">
-          <span className="userInfo">{user.name} <br /> ({user.username})</span>
+          <span className="userInfo">{user.name} <br /> ({user.email})</span>
           <button onClick={handleLogout} className="logoutBtn">Logout</button>
         </div>
       ) : (

@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Component.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export let Money = () => {
   const location = useLocation();
   const { shoeName, shoeSize, price } = location.state || {};
+
+  let navigation = useNavigate()
 
   // Form state variable
   let [fetch, setFetch] = useState({
@@ -31,6 +34,8 @@ export let Money = () => {
     axios.post('http://localhost:3000/purchases', fetch)
       .then(() => alert("Fetch Successfully"))
       .catch((error) => console.error("Error:", error));
+
+      navigation('/Purchases')
   };
 
   return (

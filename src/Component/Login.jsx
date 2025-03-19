@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 let LogIn = () => {
   let [letLogin, setLogin] = useState({
@@ -7,42 +8,48 @@ let LogIn = () => {
     password: "",
   });
 
-  let [savedData, setSaveData] = useState(null);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    let storedUser = JSON.parse(localStorage.getItem("user"));
-    setSaveData(storedUser);
-  }, []);
-
+  // Handle Input Change
   let inpChange = (e) => {
     const { name, value } = e.target;
     setLogin({ ...letLogin, [name]: value });
   };
 
-  let FinalLogin = (e) => {
+  // Perform Login
+  let FinalLogin = async (e) => {
     e.preventDefault();
 
-    if (!savedData) {
-      alert("No user found. Please register first.");
-      return;
-    }
+   
+      // Fetch all users from JSON
+      const response = axios.get("http://localhost:3000/users")
+      .then((response)=>{
+        const users = response.data;
 
-    if (savedData.username !== letLogin.username) {
-      alert("Email does not match");
-      return;
-    }
+      // Check if the user exists
+      const matchedUser = users.find(
+        (user) =>
+          user.email === letLogin.username && user.password === letLogin.password
+      );
 
-    if (savedData.password !== letLogin.password) {
-      alert("Password does not match");
-      return;
-    }
+      if (!matchedUser) {
+        alert("Invalid Email or Password");
+        return;
+      }
 
-    // Store logged-in user info
-    localStorage.setItem("loggedInUser", JSON.stringify(savedData));
+      // Save user data to localStorage
+      localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
 
-    alert("Login Successful");
-    navigate("/");
+      alert("Login Successful!");
+
+      // Redirect based on role
+      if (matchedUser.role === "admin") {
+        navigate("/AdminDashboard");
+      } else {
+        navigate("/UserDashboard");
+      }
+      })
+     
   };
 
   return (
@@ -51,11 +58,25 @@ let LogIn = () => {
       <form onSubmit={FinalLogin}>
         <div className="inputGroup">
           <label htmlFor="username">Email</label>
-          <input onChange={inpChange} name="username" type="email" id="username" placeholder="Enter Email" required />
+          <input
+            onChange={inpChange}
+            name="username"
+            type="email"
+            id="username"
+            placeholder="Enter Email"
+            required
+          />
         </div>
         <div className="inputGroup">
           <label htmlFor="password">Password</label>
-          <input onChange={inpChange} name="password" type="password" id="password" placeholder="Enter password" required />
+          <input
+            onChange={inpChange}
+            name="password"
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+            required
+          />
         </div>
         <div>
           <button className="loginBtn">Log In</button>
