@@ -1,21 +1,21 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Vijay Meena",
       "email": "vijay@gmail.com",
       "password": "vijay123",
       "role": "admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Himanshu",
       "email": "himanshu@gmail;.com",
       "password": "heman123",
       "role": "user"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Jatin",
       "email": "jatin@gmail.com",
       "password": "jatin",
@@ -24,7 +24,7 @@
   ],
   "purchases": [
     {
-      "id": 101,
+      "id": "101",
       "userId": 2,
       "Quantity": 2,
       "product": "Nike",
@@ -109,6 +109,17 @@
       "contact": "100",
       "address": "Bhopal",
       "price": 5000
+    },
+    {
+      "id": "2871",
+      "name": "Vijay",
+      "email": "vizaymeena@gmail.com",
+      "shoeName": "",
+      "shoeSize": "",
+      "quantity": "1",
+      "contact": "12",
+      "address": "12",
+      "price": 0
     }
   ]
 }

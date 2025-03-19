@@ -16,7 +16,10 @@ export const MenShoes = () => {
     ];
   
     return (
+      <>
+      <h1 className='mensHeading'>Mens Footwear</h1>
       <div className="container">
+        
         {shoes.map((shoe) => (
           <div className="shoe-card" key={shoe.id}>
             <img src={shoe.image} alt={shoe.name} className={shoe.id === 3 ? 'shoe3' : ''}/>
@@ -27,5 +30,6 @@ export const MenShoes = () => {
           </div>
         ))}
       </div>
+      </>
     );
   };

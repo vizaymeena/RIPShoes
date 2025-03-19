@@ -1,26 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
 import "./Component.css";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-
-
-// Slider
-import Carousel from 'react-bootstrap/Carousel';
+// Images
 import newRed from '../assets/Kidos/newred.jpg';
 import goldenshoe2 from '../assets/Images/men3.jpg';
 import goldenshoe3 from '../assets/Images/men.jpg';
+import Addidas from '../assets/Kidos/Addidas.jpg';
+import Nike from '../assets/Kidos/Nike.jpg';
+import Puma from '../assets/Kidos/Puma.jpg';
 
 import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-// Navbar
-
+// Navbar Component
 export let NavShoesBar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")) || null);
   const navigate = useNavigate();
@@ -29,16 +25,10 @@ export let NavShoesBar = () => {
     const handleStorageChange = () => {
       setUser(JSON.parse(localStorage.getItem("loggedInUser")) || null);
     };
-
-    // Listen for storage changes
     window.addEventListener("storage", handleStorageChange);
-    
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  // Logout Function
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setUser(null);
@@ -53,7 +43,6 @@ export let NavShoesBar = () => {
       <Link className="magicLink" to="/Kidos"><FaChild /> Kids</Link>
       <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link>
 
-      {/* Display user info if logged in */}
       {user ? (
         <div className="userSection">
           <span className="userInfo">{user.name} <br /> ({user.email})</span>
@@ -66,15 +55,12 @@ export let NavShoesBar = () => {
   );
 };
 
-
-// Slider
-
-
-export let SSlider = () => {
+// Slider Component
+export const Hit = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -82,108 +68,81 @@ export let SSlider = () => {
     arrows: true,
   };
 
+  const sliderData = [
+    { id: 1, image: newRed },
+    { id: 2, image: goldenshoe2 },
+    { id: 3, image: goldenshoe3 },
+  ];
+
   return (
-    <div className="slider-container">
-      {/* ...setting is used to pass all the properties from an object (settings) into the <Slider> component. */}
+    <div className="sliderContainer">
       <Slider {...settings}>
-        <div>
-          <img src={newRed} alt="Shoe 1" className="slider-image" />
-          <h3>Red Velvet Nike</h3>
-          <p>Stylish and comfortable sneaker for daily wear.</p>
-        </div>
-        <div>
-          <img src={goldenshoe2} alt="Shoe 2" className="slider-image" />
-          <h3>Nike Air Zoom</h3>
-          <p>Perfect for running with high-end cushioning.</p>
-        </div>
-        <div>
-          <img src={goldenshoe3} alt="Shoe 3" className="slider-image" />
-          <h3>Nike Classic</h3>
-          <p>A timeless design with durability and comfort.</p>
-        </div>
+        {sliderData.map((slide) => (
+          <div key={slide.id} className="slideItem">
+            <img src={slide.image} alt={`Slide ${slide.id}`} />
+          </div>
+        ))}
       </Slider>
     </div>
   );
 };
 
-
-// Hero Section
-
-
-
+// Hero Section Component
 export let HeroSection = () => {
   const [selectedSize, setSelectedSize] = useState({});
   const navigate = useNavigate();
 
   const shoes = [
-    {
-      id: 1,
-      name: "Nike RED VELVET",
-      img: newRed,
-      colors: ["Red", "Black", "White"],
-      sizes: [6, 7, 8, 9, 10, 11],
-      price: 5000, // Constant price
-    },
-    {
-      id: 2,
-      name: "NIKE's JAGUAR",
-      img: goldenshoe2,
-      colors: ["Gold", "Black", "Blue"],
-      sizes: [6, 7, 8, 9, 10, 11],
-      price: 6000,
-    },
-    {
-      id: 3,
-      name: "NIKE's WHITE TIGER",
-      img: goldenshoe3,
-      colors: ["White", "Black", "Gray"],
-      sizes: [6, 7, 8, 9, 10, 11],
-      price: 5500,
-    },
+    { id: 1, name: "Nike RED VELVET", img: newRed, sizes: [6, 7, 8], price: 5000 },
+    { id: 2, name: "NIKE's JAGUAR", img: goldenshoe2, sizes: [6, 7, 8], price: 6000 },
+    { id: 3, name: "NIKE's WHITE TIGER", img: goldenshoe3, sizes: [6, 7, 8], price: 5500 }
   ];
 
   const handleShopNow = (shoe) => {
-    const selectedShoeSize = selectedSize[shoe.id] || shoe.sizes[0];
-    navigate('/Receipt', { 
-      state: { 
-        shoeName: shoe.name, 
-        shoeSize: selectedShoeSize, 
-        price: shoe.price // Send constant price
-      } 
-    });
-  };
-
-  const handleSizeChange = (shoeId, size) => {
-    setSelectedSize((prev) => ({ ...prev, [shoeId]: Number(size) }));
+    navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: selectedSize[shoe.id] || shoe.sizes[0], price: shoe.price } });
   };
 
   return (
-    <div className="grid-container">
+    <>
+    <h1 className="trendngHome">Explore:Trending</h1>
+    <div className="heroGridContainer">
       {shoes.map((shoe) => (
-        <div className="grid-item" key={shoe.id}>
+        <div className="heroGridItem" key={shoe.id}>
           <div className="featShoe">
-            <img src={shoe.img} alt={shoe.name} className="shoe-img" />
+            <img src={shoe.img} alt={shoe.name} className="shoeImg" />
           </div>
-          <h2 className="shoe-title">{shoe.name}</h2>
+          <h2 className="shoeTitle">{shoe.name}</h2>
           <p>Price: ₹{shoe.price}</p>
-
-          <label className="label">Color:</label>
-          <select className="select-box">
-            {shoe.colors.map((color, index) => (
-              <option key={index} value={color}>{color}</option>
-            ))}
-          </select>
-
-          <label className="label">Size:</label>
-          <select className="select-box" onChange={(e) => handleSizeChange(shoe.id, e.target.value)}>
-            {shoe.sizes.map((size, index) => (
-              <option key={index} value={size}>{size}</option>
-            ))}
-          </select>
-
-          <button className="shop-btn" onClick={() => handleShopNow(shoe)}>Shop Now</button>
+          <button className="shopBtn" onClick={() => handleShopNow(shoe)}>Shop Now</button>
         </div>
       ))}
     </div>
+    </>
+  );
+};
+
+// Hero Section 2 Component
+export const HeroSection2 = () => {
+  const shoes = [
+    { id: 1, name: "Nike Air Max", description: "Comfortable running shoes.", price: "₹4,999", image: Nike },
+    { id: 2, name: "Adidas UltraBoost", description: "Premium sports shoes.", price: "₹6,999", image: Addidas },
+    { id: 3, name: "Puma Runner", description: "Casual wear shoes.", price: "₹3,999", image: Puma }
+  ];
+
+  return (
+    <section className="heroSection2Container">
+      <h2>Explore Our Shoes</h2>
+      <div className="heroSection2Grid">
+        {shoes.map((shoe) => (
+          <div className="heroSection2Card" key={shoe.id}>
+            <img src={shoe.image} alt={shoe.name} className="heroSection2Img" />
+            <h3>{shoe.name}</h3>
+            <p>{shoe.description}</p>
+            <p className="heroSection2Price">{shoe.price}</p>
+            <Link to='/checkout'><button className="HeroBuyBtn2">Buy Now</button></Link>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };

@@ -20,7 +20,7 @@ export default function WomenShoe() {
 
   return (
     <>
-    <h1>Womens</h1>
+    <h1 className="womenHeading">Womens</h1>
     <div className="grid-container">
       {shoes.map((shoe) => (
         <div key={shoe.id} className="card Womencard">

@@ -61,576 +61,829 @@
   background-color: #c82333; /* Darker red on hover */
 }
 
+/* Slider Component Css */
 
-  /* Hero Section */
-/* Grid Container */
-.grid-container {
- 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  width: 100%;
-}
-
-/* Individual Card */
-.grid-item {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  background: whitesmoke;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  position: relative;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.grid-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
-}
-/* Shoe Div */
-.featShoe{
-  height: 200px;
-   width: 300px;
-   border-radius: 50px 0px 50px 0px;
-  border: 2px dotted darkcyan;
-  box-shadow: 
-    0px 0px 15px 5px rgb(74, 64, 121),   /* Outer shadow */
-    inset 0px 0px 10px 5px rgb(255, 255, 255);
-  position: relative;
-  z-index: 1;
-  transition: 0.6s ease-in-out;
-  overflow: hidden;
-}
-.span{
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-/* Shoe Image */
-.shoe-img {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  max-width: 300px;
-  margin: auto;
-  border-radius: 0px 50px 0px 50px;
- 
-  transition: 0.6s ease-in-out;
-  transform-origin: center;
-  perspective: 1000px;
-}
-.shoe-img:hover{
-  transform: scale(1.3);
-}
-
-
-/* Title */
-.shoe-title {
-  font-size: 18px;
-  margin: 15px 0;
-  font-weight: bold;
-  color: black;
-  text-transform: uppercase;
-  text-shadow: 2px 2px white;
-}
-
-
-
-/* Button */
-.shop-btn {
-  position: relative;
-  margin: auto;
-  z-index: 1;
-  text-align: center;
-  display: block;
-  padding: 10px 20px;
-  margin-top: 10px;
-  color: black;
-  text-transform: uppercase;
-  background: #edeff1;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  overflow: hidden; /* Prevent overflow of the effect */
-  transition: color 0.6s ease-in-out, background 0.3s ease-in-out;
-}
-.shop-btn:hover{
-  color: white;
-}
-.shop-btn::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  width: 0%;
-  height: 0%;
-  background-color: rgb(0, 0, 0);
-  border-radius: 10px;
-  transform: translate(-50%, -50%);
-  transition: color 1s ease-in-out, width 0.8s ease-in-out, height 0.8s ease-in-out;
-}
-.label{
-  color: black;
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin-left: 10px;
-}
-.select-box{
-  background-color: #3f6b9a;
-}
-.shop-btn:hover::after {
-  width: 150%;
-  height: 150%;
-  
-}
-
-
-/* Arrow Icon */
-.arrow-icon {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 20px;
-  color: #007bff;
-  transition: transform 0.3s ease-in-out;
-}
-
-.grid-item:hover .arrow-icon {
-  transform: translateX(5px);
-}
-
-/* Slider */
-.slider-container {
+.sliderContainer {
   width: 80%;
-  margin: auto;
-  text-align: center;
+  margin: 40px auto;
 }
 
-.slider-image {
-  width: 100%;
-  height: 400px;
+.slideItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-color: #f4f4f4;
+}
+
+.slideItem img {
   object-fit: cover;
+  width: 100%;
+  margin: auto;
+  height: 500px;
   border-radius: 10px;
 }
 
-h3 {
-  margin-top: 10px;
-  font-size: 1.8rem;
-  color: #333;
-}
-
-p {
-  font-size: 1rem;
-  color: #666;
-}
-
-/*  Mens Shoes ShowCase */
 
 
-.container {
-  width: 90%;
-  max-width: 1200px;
+/* HeroSection and Hero-Section2 */
+
+/* Hero Section 1 - Dark 3D Effect */
+.heroGridContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
+  margin: 50px;
 }
 
-.shoe-card {
- 
-  position: relative;
+.heroGridItem {
+  background: linear-gradient(145deg, #1c1c1c, #2e2e2e);
+  color: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 10px 10px 20px #111, -10px -10px 20px #333;
+  transition: transform 0.5s ease;
+}
+
+.heroGridItem:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.shoeImg {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.shoeTitle {
+  margin-top: 20px;
+  font-size: 1.8rem;
+}
+
+
+
+/* Hero Section 2 - Neon Card Effect */
+/* Hero Section 1 - Modern Dark Elegance */
+
+
+
+
+/* Hero Section 2 */
+
+/* Hero Grid Container */
+.trendngHome{
+  margin-top: 15px;
+  color: darkblue;
+  font-weight: 600;
+  text-align: center;
+}
+.heroGridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Grid Item (Card) */
+.heroGridItem {
   background: #fff;
   border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
-  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-}
-.shoe3{
-  height: 200px;
-  width: 250px;
-}
-.shoe-card:hover {
-  /* transform: translateY(-10px); */
-  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding: 1.5rem;
+  position: relative;
 }
 
-.shoe-card img {
-  
-  /* filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5)); */
-  height: 210px;
-  margin-bottom: 0.5em;
-  width: 100%; 
+.heroGridItem:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Featured Shoe Image */
+.featShoe {
+  position: relative;
+  overflow: hidden;
   border-radius: 10px;
-  max-width: 220px;
-  
-  transition: transform 0.4s ease-in-out;
+}
+
+.shoeImg {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.heroGridItem:hover .shoeImg {
+  transform: scale(1.1);
+}
+
+/* Shoe Title */
+.shoeTitle {
+  text-transform: uppercase;
+  text-shadow: 2px 2px rgba(128, 128, 128, 0.628);
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.heroGridItem:hover .shoeTitle {
+  color: #e74c3c;
+}
+
+/* Price */
+.heroGridItem p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin: 0.5rem 0;
+}
+
+/* Shop Now Button */
+.shopBtn {
+  background-color: darkred;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out,transform 0.3s ease-in-out;
+  margin-top: 1rem;
+}
+
+.shopBtn:hover{
+  background-color: black;
+  transform: scale(1.1);
+}
+
+/* Simplified Hover Effect */
+.heroGridItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(87, 80, 168, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.heroGridItem:hover::before {
+  opacity: 1;
+}
+
+
+/* Hero Section Container */
+.heroSection2Container {
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroSection2Container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+/* Hero Section Grid */
+.heroSection2Grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Hero Section Card */
+.heroSection2Card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  padding: 1.5rem;
+  border: 2px solid transparent;
+}
+
+.heroSection2Card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: 2px solid #8e44ad;
+}
+
+/* Inverted Border Effect */
+.heroSection2Card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid #8e44ad;
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.heroSection2Card:hover::before {
+  opacity: 1;
+}
+
+/* Hero Section Image */
+.heroSection2Img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.heroSection2Card:hover .heroSection2Img {
+  transform: scale(1.05);
+}
+
+/* Card Content */
+.heroSection2Card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.heroSection2Card:hover h3 {
+  color: #8e44ad;
+}
+
+.heroSection2Card p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0.5rem 0;
+}
+
+.heroSection2Price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #27ae60;
+  margin: 0.5rem 0;
+}
+
+/* Buy Now Button */
+.HeroBuyBtn2 {
+  background-color: black;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.3s ease;
+  margin-top: 1rem;
+}
+
+.HeroBuyBtn2:hover {
+  background-color: brown !important;
+  transform: scale(1.05);
+}
+
+/* Light Color Combos */
+.heroSection2Card:nth-child(1) {
+  background-color: #f9f7ff;
+}
+
+.heroSection2Card:nth-child(2) {
+  background-color: #f0f8ff;
+}
+
+.heroSection2Card:nth-child(3) {
+  background-color: #fff7f0;
+}
+
+
+/* MensShoes Component  */
+
+.mensHeading{
+  margin-top: 15px;
+  color: purple;
+  text-align: center;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Shoe Card */
+.shoe-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 280px;
+  text-align: center;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.shoe-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* 3D Hover Effect on Image */
+.shoe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
 }
 
 .shoe-card:hover img {
-  transform: rotate(-8deg) translateY(-10px) scale(1.2);
+  transform: perspective(1000px) rotateY(15deg) scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* Special Case for Shoe 3 */
+.shoe3 {
+  transform: perspective(1000px) rotateY(-15deg) scale(1.1);
+}
+
+.shoe-card:hover .shoe3 {
+  transform: perspective(1000px) rotateY(0deg) scale(1.1);
+}
+
+/* Card Content */
 .shoe-card h3 {
-  margin: 15px 0 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.shoe-card:hover h3 {
+  color: #8e44ad;
 }
 
 .shoe-card p {
-  color: #777;
-  font-size: 14px;
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0.5rem 0;
 }
 
+/* Price */
 .price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #e74c3c;
-  margin: 10px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #27ae60;
+  margin: 0.5rem 0;
 }
 
+/* Buy Now Button */
 .buy-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: black !important;
+  background: black;
   color: #fff;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s;
-  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 1rem;
 }
 
 .buy-btn:hover {
-  background: darkblue !important;
+  background: darkblue;
+  transform: scale(1.05);
 }
 
 
-/*  WomenShoe */
+/* Womens Component */
+
+
+/* Heading */
+.womenHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #8e44ad;
+  margin: 2rem 0;
+}
+
+/* Grid Container */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
+/* Card Styling */
 .card {
-  background: white;
-  border-radius: 10px;
-  padding: 15px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease,border 0.1s ease-in-out;
-  perspective: 1000px;
+  padding: 1.5rem;
 }
-.Womencard img{
-  transition: transform 0.6s ease-in-out;
-  margin-bottom: 0.2em;
-  
-}
-
-.Womencard img:hover{
-  transform: scale(1.1);
-}
-.Womencard h3{
-  margin-top: 0.5em;
-  color: darkblue;
-}
-
 
 .card:hover {
-  transform: translateY(-10px) scale(1.05);
-  border: 3px double black;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.897);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
+/* Shoe Image */
 .shoe-image {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
   border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .shoe-image {
+  transform: scale(1.05);
+}
+
+/* Card Content */
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+  color: #8e44ad;
 }
 
 .price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #e44d26;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #27ae60;
+  margin: 0.5rem 0;
 }
 
+/* Options (Size and Color Dropdowns) */
 .options {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 10px 0;
-  
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
-select {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: rgb(54, 69, 134);
-  color: white;
-}
-
-.womenBuy {
-  background: rgb(15, 95, 104);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+.options select {
+  width: 48%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 600;
-  transition: background 0.3s ease;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-
-}
-.womenBuy::before{
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  background-color: rgb(6, 54, 6);
-  width: 0%;
-  height: 0%;
-  transform: translate(-50%,-50%);
-  /* box-shadow: inset 0px 0px 10px white; */
-  transition: width 0.6s ease-in-out,height 0.6s ease-in-out,shadow 0.6s ease-in-out;
+  color: #333;
+  background: #f9f9f9;
+  transition: border-color 0.3s ease;
 }
 
-.womenBuy:hover::before {
-  height: 150%;
-  width: 150%;
+.options select:hover {
+  border-color: #8e44ad;
 }
 
+/* Buy Now Button */
+.womenBuy {
+  background: black;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 1rem;
+  width: 100%;
+}
 
-/* Kids */
-/* KidosSection.css */
-.kidos-section {
+.womenBuy:hover {
+  background-color: darkblue;
+  transform: scale(1.05);
+}
+
+/* Kidos Component */
+
+/* Section Heading */
+.kidos-section h2 {
   text-align: center;
-  padding: 40px;
-  background-color: #f9f9f9;
-}
-.kidos-section h2{
-  width: 50%;
-  margin: 0 auto 50px ;
-  color: #3f6b9a;
-  
-  border-bottom: 2px solid rgb(192, 22, 50);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e67e22;
+  margin: 2rem 0;
 }
 
+/* Container for Kid Shoes */
 .KidContainer {
   display: flex;
-  justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Kid Shoe Card */
 .kidshoeCard {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s;
-  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding: 1.5rem;
+  width: 280px;
+  position: relative;
 }
 
 .kidshoeCard:hover {
   transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
+/* 3D Hover Effect on Image */
 .kidshoeCard img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-
+  border-radius: 10px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
 }
 
+.kidshoeCard:hover img {
+  transform: perspective(1000px) rotateY(15deg) scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
 
+/* Card Content */
 .kidshoeCard h3 {
-  letter-spacing: 2px;
-  font-size: 20px;
-  margin: 15px 5px;
-  
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.kidshoeCard:hover h3 {
+  color: #e67e22;
 }
 
 .kidshoeCard p {
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: #700b0b;
-}
-
-button {
-  text-transform: uppercase;
+  font-size: 1.25rem;
+  color: #27ae60;
   font-weight: 600;
-  background-color: #361212;
-  color: white;
+  margin: 0.5rem 0;
+}
+
+/* Shop Now Button */
+.kidshoeCard button {
+  background: Black;
+  color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 
-button:hover {
-  background-color: #000000;
+.kidshoeCard button:hover {
+  background: darkblue;
+  transform: scale(1.05);
 }
 
+/* Footer Section */
 
-
-
-/* Footer */
-/* Footer Styling */
+/* Footer Container */
 .footer {
-  background-color: #222;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
+  background-color: #ffffff;
+  padding: 2rem 1rem;
+  border-top: 1px solid #e0e0e0;
 }
 
 .footer-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
-  max-width: 1100px;
-  margin: auto;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
+/* Footer Sections */
 .footer-section {
-  width: 200px;
-  margin-bottom: 20px;
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 1.5rem;
 }
 
-.footer-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: #f8b400;
-}
-
+.footer-section h2,
 .footer-section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
+.footer-section p {
+  color: #7f8c8d;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Quick Links and Customer Support */
 .footer-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-section ul li {
-  margin: 8px 0;
+  margin-bottom: 0.75rem;
 }
 
 .footer-section ul li a {
+  color: #7f8c8d;
   text-decoration: none;
-  color: white;
-  transition: 0.3s;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-  color: #f8b400;
+  color: #8e44ad;
 }
 
-/* Newsletter */
+/* Newsletter Section */
 .newsletter {
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
+  gap: 0.5rem;
 }
 
 .newsletter input {
-  padding: 8px;
-  border: none;
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
   outline: none;
-  border-radius: 4px;
-  width: 70%;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter input:focus {
+  border-color: #8e44ad;
 }
 
 .newsletter button {
-  padding: 8px 12px;
+  background: linear-gradient(135deg, #8e44ad, #3498db);
+  color: #fff;
   border: none;
-  background-color: #f8b400;
-  color: #222;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  border-radius: 4px;
-  margin-left: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .newsletter button:hover {
-  background-color: #d89b00;
+  background: linear-gradient(135deg, #3498db, #8e44ad);
+  transform: scale(1.05);
 }
 
-/* Footer Bottom */
+/* Footer Bottom (Copyright) */
 .footer-bottom {
-  background-color: #111;
-  padding: 10px 0;
-  margin-top: 10px;
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 2rem;
+  color: #7f8c8d;
+  font-size: 0.9rem;
 }
 
+/* Receipt Page */
+/* Light Theme - Receipt Container */
+.receipt_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
 
+/* Light Theme - Receipt Form */
+.receiptForm {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
 
+.receiptForm h5 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
 
-  /* ==============================================================================================   */
+/* Form Labels */
+.receiptForm label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
 
-  /* Receipt Page */
-  .receipt_container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  }
-  .receiptForm{
-    margin: 10px ;
-   width: 400px;
-   padding: 5px 10px;
-   border: 2px solid rgba(128, 128, 128, 0.381);
+/* Form Inputs */
+.receiptForm input[type="text"],
+.receiptForm input[type="number"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
 
-  }
-  .receiptForm h5{
-    width: fit-content;
-    padding: 0px 5px;
-    border-bottom:2px solid red;
+.receiptForm input[type="text"]:focus,
+.receiptForm input[type="number"]:focus {
+  border-color: #6c63ff;
+  background-color: #ffffff;
+}
 
-  }
-  .buyButton{
-    background-color: black;
-    color: white;
-   text-transform: uppercase;
-   font-weight: 600;
-   letter-spacing: 2px;
-   transition: 0.6s all ease;
-  }
-  .buyButton:hover{
-    background-color: rgb(37, 12, 77);
-    color: white;
-  }
+/* Disabled Inputs (for Shoe Name and Size) */
+.receiptForm span {
+  display: block;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  color: #777;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Buy Button */
+.buyButton {
+  width: 100%;
+  padding: 0.75rem;
+ background-color: black;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.buyButton:hover {
+  background-color: darkgreen;
+  transform: scale(1.05);
+}

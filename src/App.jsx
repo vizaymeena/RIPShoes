@@ -3,7 +3,7 @@ import {  Routes, Route } from "react-router-dom";
 
 // Components
 
-import { NavShoesBar , HeroSection , SSlider } from "./Component/ShoesBar";
+import { NavShoesBar , HeroSection , Hit, HeroSection2 } from "./Component/ShoesBar";
 import { MenShoes } from "./Component/Mens";
 import WomenShoe from "./Component/Womens";
 import Footer from "./Component/ShoeFooter"
@@ -27,7 +27,7 @@ function App() {
 
       {/* Components change based on the URL */}
       <Routes>
-        <Route path="/" element={<><SSlider /><HeroSection /></>} /> 
+        <Route path="/" element={<><Hit /><HeroSection /> <HeroSection2/> </>} /> 
         <Route path="/Mens" element={<MenShoes />} />
         <Route path="/Womens" element={<WomenShoe />} />
         <Route path="/Kidos" element={<KidosSection />} />

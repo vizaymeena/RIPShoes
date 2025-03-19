@@ -33,8 +33,7 @@ export let Money = () => {
     e.preventDefault();
     axios.post('http://localhost:3000/purchases', fetch)
       .then(() => alert("Fetch Successfully"))
-      .catch((error) => console.error("Error:", error));
-
+  
       navigation('/Purchases')
   };
 
