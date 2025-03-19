@@ -1,0 +1,147 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Vijay Meena",
+      "email": "vijay@gmail.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Himanshu",
+      "email": "himanshu@gmail;.com",
+      "password": "user123",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "Jatin",
+      "email": "jatin@gmail.com",
+      "password": "user456",
+      "role": "user"
+    }
+  ],
+  "purchases": [
+    {
+      "id": 101,
+      "userId": 2,
+      "Quantity": 2,
+      "product": "Nike",
+      "ShoeSIze": 5,
+      "Contact": 124,
+      "Address": "Bagoniya",
+      "price": 35000
+    },
+    {
+      "id": "36b9",
+      "name": "",
+      "email": "",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "ShoeQuantity": "",
+      "contact": "",
+      "address": "",
+      "price": ""
+    },
+    {
+      "id": "e8f0",
+      "name": "",
+      "email": "",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "ShoeQuantity": "",
+      "contact": "",
+      "address": "",
+      "price": ""
+    },
+    {
+      "id": "bf12",
+      "name": "vijay",
+      "email": "",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": "5",
+      "contact": "",
+      "address": "",
+      "price": ""
+    },
+    {
+      "id": "34a5",
+      "name": "vijaymeena",
+      "email": "vizaymeena@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": "5",
+      "contact": "7987725298",
+      "address": "bagoniya",
+      "price": ""
+    },
+    {
+      "id": "efa3",
+      "name": "jatin",
+      "email": "jatin@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": "2",
+      "contact": "121",
+      "address": "bagonoya",
+      "price": null
+    },
+    {
+      "id": "6796",
+      "name": "himanshu",
+      "email": "himanshu@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": "1",
+      "contact": "7987725298",
+      "address": "bagonoya",
+      "price": null
+    },
+    {
+      "id": "a8b8",
+      "name": "ragini goswami",
+      "email": "raginigoswami@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": 1,
+      "contact": "09887161",
+      "address": "bhopal",
+      "price": null
+    },
+    {
+      "id": "6708",
+      "name": "Vijay Meena",
+      "email": "vizaymeena@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": 10,
+      "contact": "9283823912",
+      "address": "bhopal",
+      "price": null
+    },
+    {
+      "id": "6cd3",
+      "name": "",
+      "email": "",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": 2,
+      "contact": "7987725298",
+      "address": "bagonoya",
+      "price": null
+    },
+    {
+      "id": "e9fc",
+      "name": "Allu Arjun",
+      "email": "rajpatidar@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": 1,
+      "contact": "7987725298",
+      "address": "bagonoya",
+      "price": null
+    }
+  ]
+}

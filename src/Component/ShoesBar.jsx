@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+
 // Slider
 import Carousel from 'react-bootstrap/Carousel';
 import newRed from '../assets/Kidos/newred.jpg';
@@ -40,7 +42,7 @@ export let NavShoesBar = () => {
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setUser(null);
-    navigate("/Login");
+    navigate("/Signup");
   };
 
   return (
@@ -58,7 +60,7 @@ export let NavShoesBar = () => {
           <button onClick={handleLogout} className="logoutBtn">Logout</button>
         </div>
       ) : (
-        <Link className="magicLink" to="/Login"><FaUser /> Login</Link>
+        <Link className="magicLink" to="/Signup"><FaUser /> Login</Link>
       )}
     </nav>
   );
@@ -107,7 +109,12 @@ export let SSlider = () => {
 
 // Hero Section
 
+
+
 export let HeroSection = () => {
+  const [selectedSize, setSelectedSize] = useState({});
+  const navigate = useNavigate();
+
   const shoes = [
     {
       id: 1,
@@ -115,6 +122,7 @@ export let HeroSection = () => {
       img: newRed,
       colors: ["Red", "Black", "White"],
       sizes: [6, 7, 8, 9, 10, 11],
+      price: 5000, // Constant price
     },
     {
       id: 2,
@@ -122,6 +130,7 @@ export let HeroSection = () => {
       img: goldenshoe2,
       colors: ["Gold", "Black", "Blue"],
       sizes: [6, 7, 8, 9, 10, 11],
+      price: 6000,
     },
     {
       id: 3,
@@ -129,8 +138,24 @@ export let HeroSection = () => {
       img: goldenshoe3,
       colors: ["White", "Black", "Gray"],
       sizes: [6, 7, 8, 9, 10, 11],
+      price: 5500,
     },
   ];
+
+  const handleShopNow = (shoe) => {
+    const selectedShoeSize = selectedSize[shoe.id] || shoe.sizes[0];
+    navigate('/Receipt', { 
+      state: { 
+        shoeName: shoe.name, 
+        shoeSize: selectedShoeSize, 
+        price: shoe.price // Send constant price
+      } 
+    });
+  };
+
+  const handleSizeChange = (shoeId, size) => {
+    setSelectedSize((prev) => ({ ...prev, [shoeId]: Number(size) }));
+  };
 
   return (
     <div className="grid-container">
@@ -140,28 +165,23 @@ export let HeroSection = () => {
             <img src={shoe.img} alt={shoe.name} className="shoe-img" />
           </div>
           <h2 className="shoe-title">{shoe.name}</h2>
+          <p>Price: ₹{shoe.price}</p>
 
-          {/* Shoe Color Selection */}
           <label className="label">Color:</label>
           <select className="select-box">
             {shoe.colors.map((color, index) => (
-              <option key={index} value={color}>
-                {color}
-              </option>
+              <option key={index} value={color}>{color}</option>
             ))}
           </select>
 
-          {/* Shoe Size Selection */}
           <label className="label">Size:</label>
-          <select className="select-box">
+          <select className="select-box" onChange={(e) => handleSizeChange(shoe.id, e.target.value)}>
             {shoe.sizes.map((size, index) => (
-              <option key={index} value={size}>
-                {size}
-              </option>
+              <option key={index} value={size}>{size}</option>
             ))}
           </select>
 
-          <button className="shop-btn">Shop Now</button>
+          <button className="shop-btn" onClick={() => handleShopNow(shoe)}>Shop Now</button>
         </div>
       ))}
     </div>

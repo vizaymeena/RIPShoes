@@ -65,7 +65,7 @@
   /* Hero Section */
 /* Grid Container */
 .grid-container {
-  
+ 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -75,12 +75,13 @@
 
 /* Individual Card */
 .grid-item {
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
-  background: rgb(125, 121, 147);
+  background: whitesmoke;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
   position: relative;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -88,7 +89,7 @@
 
 .grid-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
 }
 /* Shoe Div */
 .featShoe{
@@ -130,21 +131,19 @@
   transform-origin: center;
   perspective: 1000px;
 }
-.grid-item:hover .featShoe{
-  transform: translateY(-10px);
+.shoe-img:hover{
+  transform: scale(1.3);
 }
-.grid-item:hover .shoe-img {
-  transform: rotateY(15deg) rotateX(-10deg) scale(1.1);
-}
+
 
 /* Title */
 .shoe-title {
   font-size: 18px;
   margin: 15px 0;
   font-weight: bold;
-  color: white;
+  color: black;
   text-transform: uppercase;
-  text-shadow: 3px 3px black;
+  text-shadow: 2px 2px white;
 }
 
 
@@ -432,6 +431,81 @@ select {
 
 
 /* Kids */
+/* KidosSection.css */
+.kidos-section {
+  text-align: center;
+  padding: 40px;
+  background-color: #f9f9f9;
+}
+.kidos-section h2{
+  width: 50%;
+  margin: 0 auto 50px ;
+  color: #3f6b9a;
+  
+  border-bottom: 2px solid rgb(192, 22, 50);
+}
+
+.KidContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.kidshoeCard {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+  width: 250px;
+}
+
+.kidshoeCard:hover {
+  transform: translateY(-10px);
+}
+
+.kidshoeCard img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+
+}
+
+
+.kidshoeCard h3 {
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin: 15px 5px;
+  
+}
+
+.kidshoeCard p {
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #700b0b;
+}
+
+button {
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #361212;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+
+
 
 /* Footer */
 /* Footer Styling */

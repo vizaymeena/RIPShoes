@@ -1,0 +1,8 @@
+
+export let UserPurchases=()=>{
+    return(
+        <>
+        </>
+    )
+
+}
