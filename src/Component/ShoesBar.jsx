@@ -88,6 +88,7 @@ export const Hit = () => {
 };
 
 // Hero Section Component
+
 export let HeroSection = () => {
   const [selectedSize, setSelectedSize] = useState({});
   const navigate = useNavigate();
@@ -99,35 +100,65 @@ export let HeroSection = () => {
   ];
 
   const handleShopNow = (shoe) => {
-    navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: selectedSize[shoe.id] || shoe.sizes[0], price: shoe.price } });
+    const size = selectedSize[shoe.id] || shoe.sizes[0];
+    navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: size, price: shoe.price } });
+  };
+
+  const handleSizeChange = (shoeId, size) => {
+    setSelectedSize((prev) => ({ ...prev, [shoeId]: size }));
   };
 
   return (
     <>
-    <h1 className="trendngHome">Explore:Trending</h1>
-    <div className="heroGridContainer">
-      {shoes.map((shoe) => (
-        <div className="heroGridItem" key={shoe.id}>
-          <div className="featShoe">
-            <img src={shoe.img} alt={shoe.name} className="shoeImg" />
+      <h1 className="trendngHome">Explore: Trending</h1>
+      <div className="heroGridContainer">
+        {shoes.map((shoe) => (
+          <div className="heroGridItem" key={shoe.id}>
+            <div className="featShoe">
+              <img src={shoe.img} alt={shoe.name} className="shoeImg" />
+            </div>
+            <h2 className="shoeTitle">{shoe.name}</h2>
+            <p>Price: ₹{shoe.price}</p>
+            
+            {/* Shoe Size Selection */}
+            <label htmlFor={`size-${shoe.id}`}>Select Size:</label>
+            <select className="ShoeSize"
+              id={`size-${shoe.id}`} 
+              value={selectedSize[shoe.id] || shoe.sizes[0]} 
+              onChange={(e) => handleSizeChange(shoe.id, e.target.value)}
+            >
+              {shoe.sizes.map((size) => (
+                <option key={size} value={size}>{size}</option>
+              ))}
+            </select>
+
+            <button className="shopBtn" onClick={() => handleShopNow(shoe)}>Shop Now</button>
           </div>
-          <h2 className="shoeTitle">{shoe.name}</h2>
-          <p>Price: ₹{shoe.price}</p>
-          <button className="shopBtn" onClick={() => handleShopNow(shoe)}>Shop Now</button>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
     </>
   );
 };
 
 // Hero Section 2 Component
 export const HeroSection2 = () => {
+  const [selectedSize, setSelectedSize] = useState({});
+  const navigate = useNavigate();
+
   const shoes = [
-    { id: 1, name: "Nike Air Max", description: "Comfortable running shoes.", price: "₹4,999", image: Nike },
-    { id: 2, name: "Adidas UltraBoost", description: "Premium sports shoes.", price: "₹6,999", image: Addidas },
-    { id: 3, name: "Puma Runner", description: "Casual wear shoes.", price: "₹3,999", image: Puma }
+    { id: 1, name: "Nike Air Max", description: "Comfortable running shoes.", price: 4999, sizes: [6, 7, 8], image: Nike },
+    { id: 2, name: "Adidas UltraBoost", description: "Premium sports shoes.", price: 6999, sizes: [6, 7, 8], image: Addidas },
+    { id: 3, name: "Puma Runner", description: "Casual wear shoes.", price: 3999, sizes: [6, 7, 8], image: Puma }
   ];
+
+  const handleBuyNow = (shoe) => {
+    const size = selectedSize[shoe.id] || shoe.sizes[0];
+    navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: size, price: shoe.price } });
+  };
+
+  const handleSizeChange = (shoeId, size) => {
+    setSelectedSize((prev) => ({ ...prev, [shoeId]: size }));
+  };
 
   return (
     <section className="heroSection2Container">
@@ -138,8 +169,21 @@ export const HeroSection2 = () => {
             <img src={shoe.image} alt={shoe.name} className="heroSection2Img" />
             <h3>{shoe.name}</h3>
             <p>{shoe.description}</p>
-            <p className="heroSection2Price">{shoe.price}</p>
-            <Link to='/checkout'><button className="HeroBuyBtn2">Buy Now</button></Link>
+            <p className="heroSection2Price">₹{shoe.price}</p>
+            
+            {/* Shoe Size Selection */}
+            <label htmlFor={`size-${shoe.id}`}>Select Size:</label>
+            <select className="ShoeSize"
+              id={`size-${shoe.id}`}
+              value={selectedSize[shoe.id] || shoe.sizes[0]}
+              onChange={(e) => handleSizeChange(shoe.id, e.target.value)}
+            >
+              {shoe.sizes.map((size) => (
+                <option key={size} value={size}>{size}</option>
+              ))}
+            </select>
+
+            <button className="HeroBuyBtn2" onClick={() => handleBuyNow(shoe)}>Buy Now</button>
           </div>
         ))}
       </div>

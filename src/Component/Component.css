@@ -168,6 +168,7 @@
   text-align: center;
   padding: 1.5rem;
   position: relative;
+  z-index: 1;
 }
 
 .heroGridItem:hover {
@@ -238,6 +239,7 @@
 .heroGridItem::before {
   content: '';
   position: absolute;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
@@ -282,6 +284,7 @@
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
+  z-index: 1;
   padding: 1.5rem;
   border: 2px solid transparent;
 }
@@ -296,6 +299,7 @@
 .heroSection2Card::before {
   content: '';
   position: absolute;
+  z-index: -1;
   top: -2px;
   left: -2px;
   right: -2px;
@@ -351,8 +355,10 @@
 
 /* Buy Now Button */
 .HeroBuyBtn2 {
+  margin: auto;
   background-color: black;
   color: #fff;
+  display: block;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
