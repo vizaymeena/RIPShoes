@@ -4,17 +4,18 @@ import "./Component.css";
 
 const ShoeFooter = () => {
   return (
+    <>
     <footer className="footer">
       <div className="footer-container">
         {/* Brand Section */}
         <div className="footer-section">
-          <h2 className="footer-title">ShoeMart</h2>
-          <p>Your go-to destination for stylish and comfortable shoes.</p>
+          <h2 className="footer-title">Juuuta</h2>
+          <p>Ultimate destination for comforting ur feets.</p>
         </div>
 
         {/* Quick Links */}
         <div className="footer-section">
-          <h3>Nav Links</h3>
+          <h3>Teleport</h3>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/shop">Shop</Link></li>
@@ -25,7 +26,7 @@ const ShoeFooter = () => {
 
         {/* Customer Support */}
         <div className="footer-section">
-          <h3>Customer Support</h3>
+          <h3>Customer Assistance</h3>
           <ul>
             <li><Link to="/faqs">FAQs</Link></li>
             <li><Link to="/returns">Returns</Link></li>
@@ -34,22 +35,13 @@ const ShoeFooter = () => {
           </ul>
         </div>
 
-        {/* Newsletter Subscription */}
-        <div className="footer-section">
-          <h3>Stay Connected</h3>
-          <p>Subscribe for the latest offers and updates.</p>
-          <div className="newsletter">
-            <input type="email" placeholder="Enter your email" />
-            <button>Subscribe</button>
-          </div>
-        </div>
       </div>
-
       {/* Copyright Section */}
       <div className="footer-bottom">
         &copy; {new Date().getFullYear()} ShoeMart. All Rights Reserved.
       </div>
     </footer>
+    </>
   );
 };
 

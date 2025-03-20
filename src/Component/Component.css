@@ -5,6 +5,16 @@
     /* background-color: black; */
 }
 
+/* ShoeSize */
+.ShoeSize{
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-left: 5px;
+  background-color: gray;
+  color: white;
+  font-weight: 600;
+}
+
 /* CSS Styling */
 .magicNavbar {
   display: flex;

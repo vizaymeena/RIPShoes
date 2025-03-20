@@ -14,9 +14,6 @@ export let UserPurchases = () => {
       .then((response) => {
         setPurchases(response.data);
       })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
   };
 
   useEffect(() => {
@@ -27,8 +24,8 @@ export let UserPurchases = () => {
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3000/purchases/${id}`)
       .then(() => {
-        setPurchases((prevPurchases) =>
-          prevPurchases.filter((purchase) => purchase?.id !== id)
+        setPurchases((prev) =>
+          prev.filter((purchase) => purchase?.id !== id)
         );
         alert("Purchase deleted successfully!");
       })
@@ -45,12 +42,12 @@ export let UserPurchases = () => {
   };
 
   // Filter Data Based on Logged-in Email
-  const filteredPurchases = purchases.filter((purchase) => purchase?.email === userEmail);
+  // const filteredPurchases = purchases.filter((purchase) => purchase?.email === userEmail);
 
   return (
     <div className="purchaseContainer">
       <h2>Your Purchases</h2>
-      {filteredPurchases.length > 0 ? (
+      {purchases.length > 0 ? (
         <table className="purchaseTable">
           <thead>
             <tr>
@@ -66,7 +63,7 @@ export let UserPurchases = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredPurchases.map((purchase, index) => (
+            {purchases.map((purchase, index) => (
               <tr key={index}>
                 <td>{purchase?.name}</td>
                 <td>{purchase?.email}</td>
