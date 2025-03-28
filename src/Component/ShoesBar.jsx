@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
+// import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
 import "./Component.css";
 
 // Images
@@ -10,50 +10,56 @@ import goldenshoe3 from '../assets/Images/men.jpg';
 import Addidas from '../assets/Kidos/Addidas.jpg';
 import Nike from '../assets/Kidos/Nike.jpg';
 import Puma from '../assets/Kidos/Puma.jpg';
+// AboutImages
+import About1 from '../assets/Kidos/About1.jpg'
+import About2 from '../assets/Kidos/About2.jpg'
+import About3 from '../assets/Kidos/About3.jpg'
 
+
+// Slider
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-// Navbar Component
-export let NavShoesBar = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")) || null);
-  const navigate = useNavigate();
+// // Navbar Component
+// export let NavShoesBar = () => {
+//   const [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")) || null);
+//   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setUser(JSON.parse(localStorage.getItem("loggedInUser")) || null);
-    };
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
+//   useEffect(() => {
+//     const handleStorageChange = () => {
+//       setUser(JSON.parse(localStorage.getItem("loggedInUser")) || null);
+//     };
+//     window.addEventListener("storage", handleStorageChange);
+//     return () => window.removeEventListener("storage", handleStorageChange);
+//   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
-    setUser(null);
-    navigate("/Signup");
-  };
+//   const handleLogout = () => {
+//     localStorage.removeItem("loggedInUser");
+//     setUser(null);
+//     navigate("/Signup");
+//   };
 
-  return (
-    <nav className="magicNavbar">
-      <Link className="magicLink" to="/"><FaHome /> Home</Link>
-      <Link className="magicLink" to="/Mens"><FaMale /> Mens</Link>
-      <Link className="magicLink" to="/Womens"><FaFemale /> Womens</Link>
-      <Link className="magicLink" to="/Kidos"><FaChild /> Kids</Link>
-      <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link>
+//   return (
+//     <nav className="magicNavbar">
+//       <Link className="magicLink" to="/"><FaHome /> Home</Link>
+//       <Link className="magicLink" to="/Mens"><FaMale /> Mens</Link>
+//       <Link className="magicLink" to="/Womens"><FaFemale /> Womens</Link>
+//       <Link className="magicLink" to="/Kidos"><FaChild /> Kids</Link>
+//       {/* <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link> */}
 
-      {user ? (
-        <div className="userSection">
-          <span className="userInfo">{user.name} <br /> ({user.email})</span>
-          <button onClick={handleLogout} className="logoutBtn">Logout</button>
-        </div>
-      ) : (
-        <Link className="magicLink" to="/Signup"><FaUser /> Login</Link>
-      )}
-    </nav>
-  );
-};
+//       {user ? (
+//         <div className="userSection">
+//           <span className="userInfo">{user.name} <br /> ({user.email})</span>
+//           <button onClick={handleLogout} className="logoutBtn">Logout</button>
+//         </div>
+//       ) : (
+//         <Link className="magicLink" to="/Signup"><FaUser /> Login</Link>
+//       )}
+//     </nav>
+//   );
+// };
 
 // Slider Component
 export const Hit = () => {
@@ -184,6 +190,35 @@ export const HeroSection2 = () => {
             </select>
 
             <button className="HeroBuyBtn2" onClick={() => handleBuyNow(shoe)}>Buy Now</button>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+
+
+
+// ABOUT COMPONENT
+export const AboutShoes = () => {
+  const aboutData = [
+    { id: 1, img: About1, title: 'Our Story' },
+    { id: 2, img: About2, title: 'Our Mission' },
+    { id: 3, img: About3, title: 'Our Vision' },
+  ];
+
+  return (
+    <section className="aboutSection">
+      <h2>About Us</h2>
+      <div className="aboutContainer">
+        {aboutData.map((item) => (
+          <div className="aboutCard" key={item.id}>
+            <img src={item.img} alt={item.title} className="aboutImg" />
+            <div className="aboutOverlay">
+              <h3>{item.title}</h3>
+              <button className="exploreBtn">Explore</button>
+            </div>
           </div>
         ))}
       </div>

@@ -17,14 +17,14 @@ let LogIn = () => {
   };
 
   // Perform Login
-  let FinalLogin = async (e) => {
+  let FinalLogin = (e) => {
     e.preventDefault();
 
    
       // Fetch all users from JSON
-      const response = axios.get("http://localhost:3000/users")
-      .then((response)=>{
-        const users = response.data;
+      const res = axios.get("http://localhost:3000/users")
+      .then((res)=>{
+        const users = res.data;
 
       // Check if the user exists
       const matchedUser = users.find(

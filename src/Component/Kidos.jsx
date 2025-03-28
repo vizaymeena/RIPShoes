@@ -4,6 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import Kid2 from "../assets/Kidos/kidu1.jpg";
 import Kid3 from "../assets/Kidos/kidu2.jpg";
 import Kid4 from "../assets/Kidos/kid3.jpg";
+
+//
+import Dkid1 from '../assets/Kidos/Dkid1.jpg'  
+import Dkid2 from '../assets/Kidos/Dkid2.jpg'  
+import Dkid3 from '../assets/Kidos/Dkid3.jpg'  
+import Dkid4 from '../assets/Kidos/Dkid4.jpg'
+import Dkid5 from '../assets/Kidos/Dkid5.jpg'  
+
+
+
+
+
 // Css
 import './Component.css';
 
@@ -14,7 +26,13 @@ export const KidosSection = () => {
   const shoes = [
     { id: 1, name: "Sporty Sneakers", price: 1200, sizes: ["5", "6", "7", "8"], image: Kid2 },
     { id: 2, name: "Casual Comfort", price: 900, sizes: ["6", "7", "8", "9"], image: Kid3 },
-    { id: 3, name: "Classic Sandals", price: 1100, sizes: ["5", "6", "7"], image: Kid4 }
+    { id: 3, name: "Classic Sandals", price: 1100, sizes: ["5", "6", "7"], image: Kid4 },
+    { id: 3, name: "Classic Sandals", price: 1900, sizes: ["5", "6", "7"], image: Dkid1 },
+    { id: 3, name: "Classic Sandals", price: 1200, sizes: ["5", "6", "7"], image: Dkid2 },
+    { id: 3, name: "Classic Sandals", price: 900, sizes: ["5", "6", "7"], image: Dkid3 },
+    { id: 3, name: "Classic Sandals", price: 1500, sizes: ["5", "6", "7"], image: Dkid4 },
+    { id: 3, name: "Classic Sandals", price: 2000, sizes: ["5", "6", "7"], image: Dkid5 }
+
   ];
 
   // Handle Size Change

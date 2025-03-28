@@ -11,9 +11,13 @@ export let UserPurchases = () => {
   // Fetch Data from JSON Server
   const fetchData = () => {
     axios.get('http://localhost:3000/purchases')
-      .then((response) => {
-        setPurchases(response.data);
+      .then((res) => {
+        if (res.data.length > 0) {
+          const lastPurchase = res.data[res.data.length - 1];
+          setPurchases([lastPurchase]); // Storing last entry as an array
+        }
       })
+      
   };
 
   useEffect(() => {
@@ -24,29 +28,20 @@ export let UserPurchases = () => {
   const handleDelete = (id) => {
     axios.delete(`http://localhost:3000/purchases/${id}`)
       .then(() => {
-        setPurchases((prev) =>
-          prev.filter((purchase) => purchase?.id !== id)
-        );
+        setPurchases([]);
         alert("Purchase deleted successfully!");
       })
-      
-  };
+    }
+     
 
   // Navigate to Edit Form
   const handleEdit = (purchase) => {
-    if (purchase) {
-      navigate('/EditPurchase', { state: purchase });
-    } else {
-      alert('Purchase data not found');
-    }
+    navigate('/EditPurchase', { state: purchase });
   };
-
-  // Filter Data Based on Logged-in Email
-  // const filteredPurchases = purchases.filter((purchase) => purchase?.email === userEmail);
 
   return (
     <div className="purchaseContainer">
-      <h2>Your Purchases</h2>
+      <h2>Your Recent Purchase</h2>
       {purchases.length > 0 ? (
         <table className="purchaseTable">
           <thead>
@@ -65,14 +60,14 @@ export let UserPurchases = () => {
           <tbody>
             {purchases.map((purchase, index) => (
               <tr key={index}>
-                <td>{purchase?.name}</td>
-                <td>{purchase?.email}</td>
-                <td>{purchase?.shoeName}</td>
-                <td>{purchase?.shoeSize}</td>
-                <td>{purchase?.quantity}</td>
-                <td>{purchase?.contact}</td>
-                <td>{purchase?.address}</td>
-                <td>{purchase?.price}</td>
+                <td>{purchase.name}</td>
+                <td>{purchase.email}</td>
+                <td>{purchase.shoeName}</td>
+                <td>{purchase.shoeSize}</td>
+                <td>{purchase.quantity}</td>
+                <td>{purchase.contact}</td>
+                <td>{purchase.address}</td>
+                <td>{purchase.price}</td>
                 <td className='Buttons'>
                   <button className='editButton' onClick={() => handleEdit(purchase)}>Edit</button>
                   <button className='cancelButton' onClick={() => handleDelete(purchase?.id)}>Delete</button>
@@ -82,7 +77,7 @@ export let UserPurchases = () => {
           </tbody>
         </table>
       ) : (
-        <p className="noData">No purchases found for your account</p>
+        <p className="noData">No recent purchase found for your account</p>
       )}
     </div>
   );

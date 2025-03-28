@@ -13,14 +13,12 @@ export let UserDashboard = () => {
     fetchUserPurchases();
   }, []);
 
-  const fetchUserPurchases = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/purchases');
-      const userPurchases = response.data.filter((p) => p.email === loggedInUser.email);
-      setPurchases(userPurchases);
-    } catch (error) {
-      console.error('Error fetching purchases:', error);
-    }
+  const fetchUserPurchases =  () => {
+    
+      const res =  axios.get('http://localhost:3000/purchases');
+      const userPurchases = res.data.filter((p) => p.email === loggedInUser.email);
+      setPurchases(userPurchases)
+   
   };
 
   return (
@@ -41,16 +39,16 @@ export let UserDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {purchases.map((purchase, index) => (
+            {purchases.map((bought, index) => (
               <tr key={index}>
-                <td>{purchase?.name}</td>
-                <td>{purchase?.email}</td>
-                <td>{purchase?.shoeName}</td>
-                <td>{purchase?.shoeSize}</td>
-                <td>{purchase?.quantity}</td>
-                <td>{purchase?.contact}</td>
-                <td>{purchase?.address}</td>
-                <td>{purchase?.price || 'N/A'}</td>
+                <td>{bought?.name}</td>
+                <td>{bought?.email}</td>
+                <td>{bought?.shoeName}</td>
+                <td>{bought?.shoeSize}</td>
+                <td>{bought?.quantity}</td>
+                <td>{bought?.contact}</td>
+                <td>{bought?.address}</td>
+                <td>{bought?.price || 'N/A'}</td>
               </tr>
             ))}
           </tbody>
