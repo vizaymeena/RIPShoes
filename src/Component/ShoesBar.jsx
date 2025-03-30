@@ -22,45 +22,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-// // Navbar Component
-// export let NavShoesBar = () => {
-//   const [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")) || null);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const handleStorageChange = () => {
-//       setUser(JSON.parse(localStorage.getItem("loggedInUser")) || null);
-//     };
-//     window.addEventListener("storage", handleStorageChange);
-//     return () => window.removeEventListener("storage", handleStorageChange);
-//   }, []);
-
-//   const handleLogout = () => {
-//     localStorage.removeItem("loggedInUser");
-//     setUser(null);
-//     navigate("/Signup");
-//   };
-
-//   return (
-//     <nav className="magicNavbar">
-//       <Link className="magicLink" to="/"><FaHome /> Home</Link>
-//       <Link className="magicLink" to="/Mens"><FaMale /> Mens</Link>
-//       <Link className="magicLink" to="/Womens"><FaFemale /> Womens</Link>
-//       <Link className="magicLink" to="/Kidos"><FaChild /> Kids</Link>
-//       {/* <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link> */}
-
-//       {user ? (
-//         <div className="userSection">
-//           <span className="userInfo">{user.name} <br /> ({user.email})</span>
-//           <button onClick={handleLogout} className="logoutBtn">Logout</button>
-//         </div>
-//       ) : (
-//         <Link className="magicLink" to="/Signup"><FaUser /> Login</Link>
-//       )}
-//     </nav>
-//   );
-// };
-
 // Slider Component
 export const Hit = () => {
   const settings = {
@@ -106,8 +67,24 @@ export let HeroSection = () => {
   ];
 
   const handleShopNow = (shoe) => {
-    const size = selectedSize[shoe.id] || shoe.sizes[0];
-    navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: size, price: shoe.price } });
+   
+    const isLoggedIn = localStorage.getItem('loggedInUser')
+    if(isLoggedIn){
+      const size = selectedSize[shoe.id] || shoe.sizes[0];
+
+      navigate('/Receipt', { state: 
+        { 
+         shoeName: shoe.name, 
+         shoeSize: size, 
+         price: shoe.price 
+        } 
+      });
+
+    } else{
+      alert('please login first in order to proceed further')
+      navigate('/login')
+    }
+   
   };
 
   const handleSizeChange = (shoeId, size) => {
@@ -158,8 +135,15 @@ export const HeroSection2 = () => {
   ];
 
   const handleBuyNow = (shoe) => {
-    const size = selectedSize[shoe.id] || shoe.sizes[0];
-    navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: size, price: shoe.price } });
+    const isLoggedIn = localStorage.getItem('loggedInUser')
+    if(isLoggedIn){
+      const size = selectedSize[shoe.id] || shoe.sizes[0];
+      navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: size, price: shoe.price } });
+      
+    } else{
+      alert('please login first in order to proceed further')
+      navigate('/login')
+    }
   };
 
   const handleSizeChange = (shoeId, size) => {

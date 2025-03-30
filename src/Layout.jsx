@@ -26,6 +26,22 @@ export let NavShoesBar = () => {
     navigate("/Signup");
   };
 
+  // Dashboard
+  
+  // Navigate to the correct dashboard based on role
+  const DashBoard= () => {
+    if (user) {
+      if (user.role === "admin") {
+        navigate("/AdminDasboard")
+      } else {
+        navigate("/UserDasboard")
+      }
+    } else {
+      
+      navigate("/Login");
+    }
+  };
+
   return (
     <>
     <nav className="magicNavbar">
@@ -33,9 +49,9 @@ export let NavShoesBar = () => {
       <Link className="magicLink" to="/Mens"><FaMale /> Mens</Link>
       <Link className="magicLink" to="/Womens"><FaFemale /> Womens</Link>
       <Link className="magicLink" to="/Kidos"><FaChild /> Kids</Link>
-      <Link className="magicLink" to="/AdminDasboard"><FaChild /> AdminDashboard </Link>
+      <span onClick={DashBoard} className="magicLink"><FaChild /> Dashboard </span>
       
-      {/* <Link className="magicLink" to="/About"><FaInfoCircle /> About</Link> */}
+     
 
       {user ? (
         <div className="userSection">
@@ -43,7 +59,7 @@ export let NavShoesBar = () => {
           <button onClick={handleLogout} className="logoutBtn">Logout</button>
         </div>
       ) : (
-        <Link className="magicLink" to="/Signup"><FaUser /> Login</Link>
+        <Link className="magicLink" to="/Signup"><FaUser /> Signup</Link>
       )}
     </nav>
 

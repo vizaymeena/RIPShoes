@@ -42,14 +42,22 @@ export const KidosSection = () => {
 
   // Handle Buy Now
   const handleBuyNow = (shoe) => {
-    const size = selectedSize[shoe.id] || shoe.sizes[0];
-    navigate('/Receipt', {
-      state: {
-        shoeName: shoe.name,
-        shoeSize: size,
-        price: shoe.price
-      }
-    });
+    const isLoggedIn = localStorage.getItem('loggedInUser')
+    if(isLoggedIn){
+      const size = selectedSize[shoe.id] || shoe.sizes[0];
+
+      navigate('/Receipt', {
+        state: {
+          shoeName: shoe.name,
+          shoeSize: size,
+          price: shoe.price
+        }
+      });
+    } else{
+      alert('Please Login first in order to proceed further')
+      navigate('/Login')
+    }
+   
   };
 
   return (

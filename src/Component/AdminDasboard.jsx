@@ -4,7 +4,6 @@ import './Dashboard.css';
 
 export const AdminDashboard = () => {
   const [purchases, setPurchases] = useState([]);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -15,22 +14,27 @@ export const AdminDashboard = () => {
     fetchPurchases();
   }, []);
 
-  const fetchPurchases = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/purchases');
-      setPurchases(response.data);
-    } catch (error) {
-      console.error('Error fetching purchases:', error);
-      setError('Failed to fetch purchases. Please try again later.');
-    }
+  const fetchPurchases = () => {
+    // Using axios with .then() and .catch()
+    axios
+      .get('http://localhost:3000/purchases')
+      .then((res) => {
+        // Ensure that the data is an array
+        if (Array.isArray(res.data)) {
+          setPurchases(res.data);
+        } else {
+          console.error('Error: Purchases data is not an array.');
+        }
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the fetch
+        console.error('Error fetching purchases:', error);
+      });
   };
 
   return (
     <div className="dashboard-container">
       <h2>All User Purchases (Admin View)</h2>
-      
-      {error && <p className="error">{error}</p>}
-      
       {purchases.length > 0 ? (
         <div className="table-wrapper">
           <table>

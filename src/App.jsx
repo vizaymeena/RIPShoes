@@ -34,7 +34,7 @@ function App() {
 
       {/* Components change based on the URL */}
      
-        {/* <Route path="/" element={<><Hit /><HeroSection /> <HeroSection2/> </>} />  */}
+        {/* <Route path="/ShoesBar" element={ <NavShoesBar/>} />  */}
         <Route path="/Mens" element={<MenShoes />} />
         <Route path="/Womens" element={<WomenShoe />} />
         <Route path="/Kidos" element={<KidosSection />} />
@@ -48,8 +48,8 @@ function App() {
         <Route path="/EditPurchase" element={<EditForm/>}/>
 
         {/* Dasboard Routes*/}
-        <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
-        <Route path="/UserDashboard" element={<UserDashboard/>}/>
+        <Route path="/AdminDasboard" element={<AdminDashboard/>}/>
+        <Route path="/UserDasboard" element={<UserDashboard/>}/>
 
         {/* abot */}
         {/* <Route path="/About" element={<AboutShoes/>}/> */}

@@ -30,17 +30,33 @@ export default function WomenShoe() {
   };
 
   const handleBuyNow = (shoe) => {
-    const selectedSize = selectedOptions[shoe.id]?.size || shoe.sizes[0];
-    const selectedColor = selectedOptions[shoe.id]?.color || shoe.colors[0];
+   
+    
+    const isLoggedIn = localStorage.getItem('loggedInUser')
+    if(isLoggedIn){
+      const selectedSize = selectedOptions[shoe.id]?.size || shoe.sizes[0];
+      const selectedColor = selectedOptions[shoe.id]?.color || shoe.colors[0];
 
-    navigate('/receipt', {
-      state: {
-        shoeName: shoe.name,
-        price: shoe.price,
-        shoeSize: selectedSize,
-        shoeColor: selectedColor,
-      },
-    });
+
+      navigate('/receipt', {
+        state: {
+          shoeName: shoe.name,
+          price: shoe.price,
+          shoeSize: selectedSize,
+          shoeColor: selectedColor,
+        },
+      });
+    } else{
+
+      alert("Make Sure to Login first in order to process further ")
+      navigate('/login');
+
+    }
+
+
+
+
+   
   };
 
   return (

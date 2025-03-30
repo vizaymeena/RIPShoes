@@ -3,14 +3,14 @@
     {
       "id": "1",
       "name": "Vijay Meena",
-      "email": "vijay@gmail.com",
-      "password": "vijay123",
+      "email": "vizaymeena@gmail.com",
+      "password": "vizay1999",
       "role": "admin"
     },
     {
       "id": "2",
       "name": "Himanshu",
-      "email": "himanshu@gmail;.com",
+      "email": "himanshu@gmail.com",
       "password": "heman123",
       "role": "user"
     },

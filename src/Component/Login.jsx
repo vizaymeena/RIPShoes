@@ -42,13 +42,9 @@ let LogIn = () => {
 
       alert("Login Successful!");
 
-      // Redirect based on role
-      if (matchedUser.role === "admin") {
-        navigate("/AdminDashboard");
-      } else {
-        navigate("/UserDashboard");
-      }
-      })
+      
+        navigate("/");
+    })
      
   };
 

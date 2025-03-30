@@ -5,15 +5,11 @@ import air1 from '../assets/Images/air11.jpg';
 import air2 from '../assets/Images/aair2.jpg';
 import air3 from '../assets/Images/air33.jpg';
 import air4 from '../assets/Images/aair44.jpg';
-// 
 import men1 from '../assets/Kidos/Dmen1.jpg'
 import men2 from '../assets/Kidos/Dmen2.jpg'
 import men3 from '../assets/Kidos/Dmen3.jpg'
 import men4 from '../assets/Kidos/Dmen3.jpg'
 import men5 from '../assets/Kidos/Dmen3.jpg'
-
-
-
 
 export const MenShoes = () => {
   const navigate = useNavigate();
@@ -29,7 +25,6 @@ export const MenShoes = () => {
     { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men3, sizes: [6, 7, 8, 9] },
     { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men4, sizes: [6, 7, 8, 9] },
     { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men5, sizes: [6, 7, 8, 9] },
-    
   ];
 
   const handleSizeChange = (shoeId, size) => {
@@ -37,14 +32,24 @@ export const MenShoes = () => {
   };
 
   const handleBuyNow = (shoe) => {
-    const size = selectedSize[shoe.id] || shoe.sizes[0]; // Default to the first size if not selected
-    navigate('/receipt', {
-      state: {
-        shoeName: shoe.name,
-        price: shoe.price,
-        shoeSize: size,
-      }
-    });
+    // Check if the user is logged in
+    const isLoggedIn = localStorage.getItem('loggedInUser');  // Assuming you store login status in localStorage
+
+    if (isLoggedIn) {
+      // User is logged in, proceed to receipt page
+      const size = selectedSize[shoe.id] || shoe.sizes[0]; // Default to the first size if not selected
+      navigate('/receipt', {
+        state: {
+          shoeName: shoe.name,
+          price: shoe.price,
+          shoeSize: size,
+        }
+      });
+    } else {
+      alert("Make Sure to Login first in order to process further ")
+      // User is not logged in, redirect to login page
+      navigate('/login'); // Replace '/login' with your actual login route
+    }
   };
 
   return (
