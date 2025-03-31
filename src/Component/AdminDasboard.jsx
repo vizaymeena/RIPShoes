@@ -15,9 +15,8 @@ export const AdminDashboard = () => {
   }, []);
 
   const fetchPurchases = () => {
-    // Using axios with .then() and .catch()
-    axios
-      .get('http://localhost:3000/purchases')
+    
+     axios.get('http://localhost:3000/purchases')
       .then((res) => {
         // Ensure that the data is an array
         if (Array.isArray(res.data)) {

@@ -62,7 +62,7 @@ export const KidosSection = () => {
 
   return (
     <section className="kidos-section">
-      <h2>Trendy & Comfortable Kids' Shoes</h2>
+      <h2 className='kidosheading'>Trendy & Comfortable Kids' Shoes</h2>
       <div className="KidContainer">
         {shoes.map((shoe) => (
           <div className="kidshoeCard" key={shoe.id}>

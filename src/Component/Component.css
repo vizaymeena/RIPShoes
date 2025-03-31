@@ -393,8 +393,12 @@
 /* MensShoes Component  */
 
 .mensHeading{
+  width: fit-content;
+  padding: 0px 10px;
+  margin: 0 auto;
   margin-top: 15px;
   color: purple;
+  border-bottom: 2px solid purple;
   text-align: center;
 }
 .container {
@@ -501,11 +505,13 @@
 
 /* Heading */
 .womenHeading {
+  width: fit-content;
+  border-bottom: 2px solid #8e44ad;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
   color: #8e44ad;
-  margin: 2rem 0;
+  margin: 2rem auto;
 }
 
 /* Grid Container */
@@ -613,12 +619,15 @@
 /* Kidos Component */
 
 /* Section Heading */
-.kidos-section h2 {
+.kidos-section .kidosheading{
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
   color: #e67e22;
-  margin: 2rem 0;
+  width: fit-content;
+  padding: 0px 10px;
+  margin: 2rem auto;
+  border-bottom: 2px solid #e67e22;
 }
 
 /* Container for Kid Shoes */

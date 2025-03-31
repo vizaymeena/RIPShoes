@@ -87,10 +87,11 @@ input {
     letter-spacing: 2px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.3s,color 0.3s ease-in-out;
+    transition: background 0.3s,color 0.3s ease-in-out,border 0.3s ease-in-out;
 }
 .loginButton:hover{
- color: white;
+ color: green;
+ border: 2px solid green;
 }
 
 
