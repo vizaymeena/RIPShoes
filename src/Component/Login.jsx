@@ -24,7 +24,7 @@ let LogIn = () => {
       // Fetch all users from JSON
       const res = axios.get("http://localhost:3000/users")
       .then((res)=>{
-        const users = res.data;
+       const users = res.data;
 
       // Check if the user exists
       const matchedUser = users.find(

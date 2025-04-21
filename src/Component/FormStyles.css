@@ -1,14 +1,22 @@
 /* FormStyles.css */
 /* Sign Up */
+.error {
+    color: red;
+    font-size: 0.85rem;
+    margin: 4px 0 8px;
+  }
+  
 .signContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: fit-content;
     background-color: #f4f4f4;
 }
 
 .formContainer {
+    margin: 10px 0px;
     background: white;
     padding: 0.5rem 1rem;
     border-radius: 10px;

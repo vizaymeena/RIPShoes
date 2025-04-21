@@ -142,6 +142,17 @@
       "contact": "7987725298",
       "address": "Bagoniya",
       "price": 5000
+    },
+    {
+      "id": "eac1",
+      "name": "Vijay Meena",
+      "email": "vizaymeena@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": "2",
+      "contact": "7987725298",
+      "address": "bagonoya",
+      "price": 5000
     }
   ]
 }

@@ -26,9 +26,7 @@ export let NavShoesBar = () => {
     navigate("/Signup");
   };
 
-  // Dashboard
-  
-  // Navigate to the correct dashboard based on role
+  // go to admin or userdashboard
   const DashBoard= () => {
     if (user) {
       if (user.role === "admin") {
@@ -68,13 +66,13 @@ export let NavShoesBar = () => {
 
      <footer className="footer">
           <div className="footer-container">
-            {/* Brand Section */}
+           
             <div className="footer-section">
               <h2 className="footer-title">Juuuta</h2>
               <p>Ultimate destination for comforting ur feets.</p>
             </div>
     
-            {/* Quick Links */}
+           
             <div className="footer-section">
               <h3>Teleport</h3>
               <ul>
@@ -85,7 +83,7 @@ export let NavShoesBar = () => {
               </ul>
             </div>
     
-            {/* Customer Support */}
+          
             <div className="footer-section">
               <h3>Customer Assistance</h3>
               <ul>
@@ -96,10 +94,6 @@ export let NavShoesBar = () => {
               </ul>
             </div>
     
-          </div>
-          {/* Copyright Section */}
-          <div className="footer-bottom">
-            &copy; {new Date().getFullYear()} ShoeMart. All Rights Reserved.
           </div>
         </footer>
 
