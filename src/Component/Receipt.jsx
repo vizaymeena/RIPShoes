@@ -1,74 +1,147 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import './Component.css';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import './Component.css';
 
-export let Money = () => {
-  const location = useLocation();
-  const { shoeName, shoeSize, price } = location.state || {};
+export const Money = () => {
+  let location = useLocation();
+  let navigate = useNavigate();
 
-  let navigation = useNavigate()
+  console.log(location.state)
 
-  // Form state variable
+  let { shoeName, shoeSize, price: basePrice } = location.state || {};
+  
+  let {name,email}= location.state || {}
+  console.log(name)
+
+  
   let [fetch, setFetch] = useState({
-    name: '',
-    email: '',
+    name,
+    email,
     shoeName: shoeName || '',
     shoeSize: shoeSize || '',
     quantity: 1,
     contact: '',
     address: '',
-    price: price || 0,
+    price: basePrice || 0, 
   });
+  const [contactError, setContactError] = useState('');
 
-  // Handle Input Changes
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-     setFetch({...fetch,[name]:value})
+
+  // calculate totall price based on quantity 
+  useEffect(() => {
+    if (fetch.quantity && basePrice) {
+      let calculatedPrice = basePrice * fetch.quantity;
+      setFetch(prev => ({
+        ...prev,
+        price: calculatedPrice,
+      }));
+      
+    }
+  }, [fetch.quantity, basePrice]);
+
+
+  // Handle input changes for all fields
+  let handleInput = (e) => {
+    let { name, value } = e.target;
+
+    if (name === 'quantity') {
+      let qty = value;
+      
+      if (value === '' || (qty >= 1 && qty <= 10)) {
+        setFetch(prev => ({ ...prev, quantity: value === '' ? '' : qty }));
+      }
+    } else {
+      setFetch(prev => ({ ...prev, [name]: value }));
+    }
   };
 
-  // Finalizing the purchase
+  // submit form function
   const BuyReceipt = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/purchases', fetch)
-      .then(() => alert("Fetch Successfully"))
   
-      navigation('/Purchases')
+    // Contact validation
+    const contact = fetch.contact.trim();
+    const phoneRegex = /^[6-9]\d{9}$/;
+  
+    if (!contact) {
+      setContactError("Contact field cannot be empty");
+      return;
+    }
+  
+    if (!/^\d+$/.test(contact)) {
+      setContactError("Contact number must contain only digits.");
+      return;
+    }
+  
+    if (!phoneRegex.test(contact)) {
+      setContactError("Contact number must starts with 9, 8, 7, or 6 and be 10 digits.");
+      return;
+    }
+  
+    setContactError("")
+  
+    // Quantity validation
+    if (!fetch.quantity || fetch.quantity < 1 || fetch.quantity > 10) {
+      alert("Please enter a valid quantity between 1 and 10.");
+      return
+    }
+  
+    // Submit form
+    axios.post('http://localhost:3000/purchases', fetch)
+      .then(() => {
+        alert("order has been placed successfully")
+        navigate('/Purchases')
+      });
   };
+  
 
   return (
-    <div className="receipt_container">
-      <div className="receiptForm">
-        <h5>Receipt Form</h5>
-        <form onSubmit={BuyReceipt}>
-          <label>Name</label>
-          <input type="text" placeholder="Enter Your Name" name='name' onChange={handleInput} />
+    <div style={{ display: "flex", justifyContent: "center", padding: "2rem" }}>
+  <div style={{ width: "100%", maxWidth: "500px", background: "#fff", padding: "2rem", borderRadius: "12px", boxShadow: "0 0 10px rgba(0,0,0,0.1)" }}>
+    <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>Payment</h2>
 
-          <label>Email</label>
-          <input type="text" placeholder="Enter Your Email" name='email' onChange={handleInput} />
-
-          <label>Shoe</label>
-          <span>{fetch.shoeName || "Not Available"}</span>
-
-          <label>Shoe Size</label>
-          <span>{fetch.shoeSize || "Not Available"}</span>
-          
-          <label>Quantity (1-10)</label>
-          <input type="number" name='quantity'  onChange={handleInput} />
-
-          <label>Contact Number</label>
-          <input type="text" placeholder="Enter Contact Number" name='contact' onChange={handleInput} />
-
-          <label>Address</label>
-          <input type="text" placeholder="Enter Your Address" name='address' onChange={handleInput} />
-
-          <label>Final Price</label>
-          <span>{fetch.price}</span>
-
-          <input className="buyButton" type="submit" value="Buy" />
-        </form>
+    <form onSubmit={BuyReceipt}>
+      <div>
+        <label>Full Name</label>
+        <input type="text" name="name" value={fetch.name} onChange={handleInput} readOnly />
       </div>
-    </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" value={fetch.email} onChange={handleInput} readOnly />
+      </div>
+
+      <div>
+        <label>Contact Number</label>
+        <input type="text" name="contact" placeholder="9876543210" value={fetch.contact} onChange={handleInput}/>
+        {contactError && <p style={{ color: "red", marginTop: "5px" }}>{contactError}</p>}
+      </div>
+
+      <div>
+        <label>Address</label>
+        <textarea name="address" placeholder="Full delivery address..." value={fetch.address} rows="3" onChange={handleInput} required />
+      </div>
+
+      <div>
+        <label>Quantity (1-10)</label>
+        <input type="number" name="quantity" min="1" max="10" value={fetch.quantity} onChange={handleInput} required />
+      </div>
+
+      <button type="submit" className="buy-btn" style={{ width: "100%", padding: "0.75rem", marginTop: "1rem" }}>Place Order</button>
+
+      <div style={{ marginTop: "2rem", borderTop: "1px solid #ddd", paddingTop: "1rem" }}>
+        <h3 style={{ marginBottom: "1rem" }}>Order Details</h3>
+        <p><strong>User:</strong> {fetch.name}</p>
+        <p><strong>Email:</strong> {fetch.email}</p>
+        <p><strong>Shoe:</strong> {fetch.shoeName}</p>
+        <p><strong>Size:</strong> {fetch.shoeSize}</p>
+        <p><strong>Quantity:</strong> {fetch.quantity}</p>
+        <p><strong>Total Price:</strong> ₹{parseFloat(fetch.price).toFixed(2)}</p>
+      </div>
+    </form>
+  </div>
+</div>
+
   );
 };

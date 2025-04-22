@@ -16,15 +16,15 @@ export const MenShoes = () => {
   const [selectedSize, setSelectedSize] = useState({});
   
   const shoes = [
-    { id: 1, name: 'Nike Air Max', description: 'Premium quality running shoes', price: '₹11,120', image: air1, sizes: [7, 8, 9, 10] },
-    { id: 2, name: 'Adidas Ultraboost', description: 'Ultimate comfort and style', price: '₹15,150', image: air2, sizes: [6, 7, 8, 9, 10] },
-    { id: 3, name: 'Puma RS-X', description: 'Modern sneakers for daily wear', price: '₹11,110', image: air3, sizes: [8, 9, 10, 11] },
-    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: air4, sizes: [6, 7, 8, 9] },
-    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men1, sizes: [6, 7, 8, 9] },
-    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men2, sizes: [6, 7, 8, 9] },
-    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men3, sizes: [6, 7, 8, 9] },
-    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men4, sizes: [6, 7, 8, 9] },
-    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: '₹10,100', image: men5, sizes: [6, 7, 8, 9] },
+    { id: 1, name: 'Nike Air Max', description: 'Premium quality running shoes', price: 11120, image: air1, sizes: [7, 8, 9, 10] },
+    { id: 2, name: 'Adidas Ultraboost', description: 'Ultimate comfort and style', price: 15150, image: air2, sizes: [6, 7, 8, 9, 10] },
+    { id: 3, name: 'Puma RS-X', description: 'Modern sneakers for daily wear', price: 11110, image: air3, sizes: [8, 9, 10, 11] },
+    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: 10100, image: air4, sizes: [6, 7, 8, 9] },
+    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: 10100 , image: men1, sizes: [6, 7, 8, 9] },
+    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: 10100 , image: men2, sizes: [6, 7, 8, 9] },
+    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: 10100, image: men3, sizes: [6, 7, 8, 9] },
+    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: 10100, image: men4, sizes: [6, 7, 8, 9] },
+    { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: 10100 , image: men5, sizes: [6, 7, 8, 9] },
   ];
 
   const handleSizeChange = (shoeId, size) => {
@@ -32,12 +32,10 @@ export const MenShoes = () => {
   };
 
   const handleBuyNow = (shoe) => {
-    // Check if the user is logged in
-    const isLoggedIn = localStorage.getItem('loggedInUser');  // Assuming you store login status in localStorage
-
+    const isLoggedIn = localStorage.getItem('loggedInUser');
+    const size = selectedSize[shoe.id] || shoe.sizes[0];
+  
     if (isLoggedIn) {
-      // User is logged in, proceed to receipt page
-      const size = selectedSize[shoe.id] || shoe.sizes[0]; // Default to the first size if not selected
       navigate('/receipt', {
         state: {
           shoeName: shoe.name,
@@ -46,11 +44,19 @@ export const MenShoes = () => {
         }
       });
     } else {
-      alert("Make Sure to Login first in order to process further ")
-      // User is not logged in, redirect to login page
-      navigate('/login'); // Replace '/login' with your actual login route
+      
+      sessionStorage.setItem("pendingPurchase", JSON.stringify({
+        shoeName: shoe.name,
+        price: shoe.price,
+        shoeSize: size,
+      }));
+  
+      alert("Please login first.");
+
+      navigate('/login');
     }
   };
+  
 
   return (
     <>

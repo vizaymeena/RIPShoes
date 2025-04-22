@@ -19,9 +19,9 @@ import Dkid5 from '../assets/Kidos/Dkid5.jpg'
 // Css
 import './Component.css';
 
-export const KidosSection = () => {
-  const navigate = useNavigate();
-  const [selectedSize, setSelectedSize] = useState({});
+export let KidosSection = () => {
+    let navigate = useNavigate();
+    let [selectedSize, setSelectedSize] = useState({});
 
   const shoes = [
     { id: 1, name: "Sporty Sneakers", price: 1200, sizes: ["5", "6", "7", "8"], image: Kid2 },
@@ -36,29 +36,36 @@ export const KidosSection = () => {
   ];
 
   // Handle Size Change
-  const handleSizeChange = (shoeId, size) => {
+  let handleSizeChange = (shoeId, size) => {
     setSelectedSize((prev) => ({ ...prev, [shoeId]: size }));
   };
 
   // Handle Buy Now
-  const handleBuyNow = (shoe) => {
-    const isLoggedIn = localStorage.getItem('loggedInUser')
-    if(isLoggedIn){
-      const size = selectedSize[shoe.id] || shoe.sizes[0];
-
-      navigate('/Receipt', {
+  let handleBuyNow = (shoe) => {
+    let isLoggedIn = localStorage.getItem('loggedInUser')
+    if (isLoggedIn) {
+      navigate('/receipt', {
         state: {
           shoeName: shoe.name,
+          price: shoe.price,
           shoeSize: size,
-          price: shoe.price
         }
       });
-    } else{
-      alert('Please Login first in order to proceed further')
-      navigate('/Login')
+    } 
+    else {
+      
+      sessionStorage.setItem("pendingPurchase", JSON.stringify({
+        shoeName: shoe.name,
+        price: shoe.price,
+        shoeSize: size,
+      }));
+  
+      alert("Please login first.");
+
+      navigate('/login');
     }
+  }
    
-  };
 
   return (
     <section className="kidos-section">

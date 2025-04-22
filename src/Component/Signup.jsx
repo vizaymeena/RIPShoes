@@ -101,7 +101,7 @@ let SignUp = () => {
     }
 
     setErrors(err)
-  };
+  }
 
   // register function
   let Register = (e) => {
@@ -129,7 +129,7 @@ let SignUp = () => {
         <h2 className="formTitle">Sign Up</h2>
         <form onSubmit={Register}>
           <label htmlFor="name">Name</label>
-          <input onChange={inpChange} name="name" id="name" type="text" placeholder="Enter Your Name" value={user.name} />
+          <input onChange={inpChange} name="name" id="name" type="text" placeholder="Enter Your Name" value={user.name} autoFocus />
           {errors.name && <div className="error">{errors.name}</div>}
 
           <label htmlFor="email">Email</label>

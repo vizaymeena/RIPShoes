@@ -8,13 +8,13 @@ export let UserPurchases = () => {
   const userEmail = localStorage.getItem('userEmail') || '';
   const navigate = useNavigate();
 
-  // Fetch Data from JSON Server
+
   const fetchData = () => {
     axios.get('http://localhost:3000/purchases')
       .then((res) => {
         if (res.data.length > 0) {
           const lastPurchase = res.data[res.data.length - 1];
-          setPurchases([lastPurchase]); // Storing last entry as an array
+          setPurchases([lastPurchase]); // storing last entry as an array
         }
       })
       
@@ -29,7 +29,7 @@ export let UserPurchases = () => {
     axios.delete(`http://localhost:3000/purchases/${id}`)
       .then(() => {
         setPurchases([]);
-        alert("Purchase deleted successfully!");
+        alert("order has been cancelled successfully");
       })
     }
      
@@ -70,7 +70,7 @@ export let UserPurchases = () => {
                 <td>{purchase.price}</td>
                 <td className='Buttons'>
                   <button className='editButton' onClick={() => handleEdit(purchase)}>Edit</button>
-                  <button className='cancelButton' onClick={() => handleDelete(purchase?.id)}>Delete</button>
+                  <button className='cancelButton' onClick={() => handleDelete(purchase?.id)}>Cancel</button>
                 </td>
               </tr>
             ))}

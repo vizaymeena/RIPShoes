@@ -9,49 +9,49 @@ import ws6 from '../assets/Images/Ws6.jpg';
 import ws7 from '../assets/Images/Ws7.jpg';
 
 export default function WomenShoe() {
-  const navigate = useNavigate();
-  const [selectedOptions, setSelectedOptions] = useState({});
+  let navigate = useNavigate();
+  let [selectedOptions, setSelectedOptions] = useState({});
 
-  const shoes = [
-    { id: 1, name: "Stylish Heels", price: "₹11,120", colors: ["Red", "Black"], sizes: ["6", "7", "8"], image: ws1 },
-    { id: 2, name: "Casual Sneakers", price: "₹9,090", colors: ["White", "Blue"], sizes: ["6", "7", "8", "9"], image: ws2 },
-    { id: 3, name: "Elegant Flats", price: "₹8,000", colors: ["Beige", "Brown"], sizes: ["5", "6", "7"], image: ws3 },
-    { id: 4, name: "Sporty Trainers", price: "₹11,110", colors: ["Pink", "Gray"], sizes: ["6", "7", "8", "9"], image: ws3 },
-    { id: 5, name: "Chic Sandals", price: "₹7,070", colors: ["Gold", "Silver"], sizes: ["5", "6", "7", "8"], image: ws5 },
-    { id: 6, name: "Comfy Loafers", price: "₹11,100", colors: ["Black", "Navy"], sizes: ["6", "7", "8"], image: ws6 },
-    { id: 7, name: "Trendy Boots", price: "₹15,250", colors: ["Brown", "Black"], sizes: ["6", "7", "8", "9"], image: ws7 },
+  let shoes = [
+    { id: 1, name: "Stylish Heels", price: 11120, colors: ["Red", "Black"], sizes: ["6", "7", "8"], image: ws1 },
+    { id: 2, name: "Casual Sneakers", price: 9090, colors: ["White", "Blue"], sizes: ["6", "7", "8", "9"], image: ws2 },
+    { id: 3, name: "Elegant Flats", price: 8000, colors: ["Beige", "Brown"], sizes: ["5", "6", "7"], image: ws3 },
+    { id: 4, name: "Sporty Trainers", price: 11110, colors: ["Pink", "Gray"], sizes: ["6", "7", "8", "9"], image: ws3 },
+    { id: 5, name: "Chic Sandals", price: 7070, colors: ["Gold", "Silver"], sizes: ["5", "6", "7", "8"], image: ws5 },
+    { id: 6, name: "Comfy Loafers", price: 11100, colors: ["Black", "Navy"], sizes: ["6", "7", "8"], image: ws6 },
+    { id: 7, name: "Trendy Boots", price: 15250, colors: ["Brown", "Black"], sizes: ["6", "7", "8", "9"], image: ws7 },
   ];
 
-  const handleSelectChange = (shoeId, type, value) => {
+  let handleSelectChange = (shoeId, type, value) => {
     setSelectedOptions((prev) => ({
       ...prev,
       [shoeId]: { ...prev[shoeId], [type]: value },
     }));
   };
 
-  const handleBuyNow = (shoe) => {
+  let handleBuyNow = (shoe) => {
    
     
-    const isLoggedIn = localStorage.getItem('loggedInUser')
-    if(isLoggedIn){
-      const selectedSize = selectedOptions[shoe.id]?.size || shoe.sizes[0];
-      const selectedColor = selectedOptions[shoe.id]?.color || shoe.colors[0];
+  let isLoggedIn = localStorage.getItem('loggedInUser')
+  if (isLoggedIn) {
+    navigate('/receipt', {
+      state: {
+        shoeName: shoe.name,
+        price: shoe.price,
+        shoeSize: size,
+      }
+    });
+  } else {
+    
+    sessionStorage.setItem("pendingPurchase", JSON.stringify({
+      shoeName: shoe.name,
+      price: shoe.price,
+      shoeSize: size,
+    }));
 
-
-      navigate('/receipt', {
-        state: {
-          shoeName: shoe.name,
-          price: shoe.price,
-          shoeSize: selectedSize,
-          shoeColor: selectedColor,
-        },
-      });
-    } else{
-
-      alert("Make Sure to Login first in order to process further ")
-      navigate('/login');
-
-    }
+    alert("Please login first.");
+    navigate('/login');
+  }
 
 
 

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 let LogIn = () => {
   let [letLogin, setLogin] = useState({
@@ -8,71 +8,71 @@ let LogIn = () => {
     password: "",
   });
 
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
-  // Handle Input Change
   let inpChange = (e) => {
-    const { name, value } = e.target;
-    setLogin({ ...letLogin, [name]: value });
+    let { name, value } = e.target
+    setLogin({ ...letLogin, [name]: value })
   };
 
-  // Perform Login
-  let FinalLogin = (e) => {
-    e.preventDefault();
+  let FinalLogin = async (e) => {
+    e.preventDefault()
 
-   
-      // Fetch all users from JSON
-      const res = axios.get("http://localhost:3000/users")
-      .then((res)=>{
-       const users = res.data;
+    if (!letLogin.username.trim() || !letLogin.password.trim()) {
+      alert("Email and Password are required.")
+      return;
+    }
 
-      // Check if the user exists
-      const matchedUser = users.find(
-        (user) =>
-          user.email === letLogin.username && user.password === letLogin.password
+    try {
+      let res = await axios.get("http://localhost:3000/users")
+      let users = res.data
+
+    let matchedUser = users.find(
+        (obj) =>
+          obj.email === letLogin.username && obj.password === letLogin.password
       );
 
       if (!matchedUser) {
-        alert("Invalid Email or Password");
-        return;
+        alert("Invalid Email or Password")
+        return
       }
 
-      // Save user data to localStorage
-      localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
+      localStorage.setItem("loggedInUser", JSON.stringify(matchedUser))
+      alert("Login Successful!")
 
-      alert("Login Successful!");
-
-      
+      // getting values to send and display it on specific fields on reciept page
+      let pendingPurchase = sessionStorage.getItem("pendingPurchase")
+      let userInfo = {name:matchedUser.name,email:matchedUser.email}
+         console.log(userInfo)
+      if (pendingPurchase) {
+        let data = JSON.parse(pendingPurchase)
+        sessionStorage.removeItem("pendingPurchase")
+        
+        navigate("/receipt", { state: {...data,...userInfo} })
+      } else {
         navigate("/");
-    })
-     
-  };
+      }
+
+    } catch (err) {
+      console.error("Login error:", err)
+      alert("Login failed. Try again later.")
+    }
+  }
 
   return (
     <div className="LoginContainer">
       <h2>USER LOGIN</h2>
       <form onSubmit={FinalLogin}>
+
         <div className="inputGroup">
           <label htmlFor="username">Email</label>
-          <input
-            onChange={inpChange}
-            name="username"
-            type="email"
-            id="username"
-            placeholder="Enter Email"
-            required
-          />
+          <input onChange={inpChange} name="username" type="email" id="username" 
+          placeholder="Enter Email" autoFocus/>
         </div>
+
         <div className="inputGroup">
           <label htmlFor="password">Password</label>
-          <input
-            onChange={inpChange}
-            name="password"
-            type="password"
-            id="password"
-            placeholder="Enter Password"
-            required
-          />
+          <input onChange={inpChange} name="password" type="password" id="password" placeholder="Enter Password"/>
         </div>
         <div>
           <button className="loginBtn">Log In</button>

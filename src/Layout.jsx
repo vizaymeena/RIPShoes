@@ -23,7 +23,7 @@ export let NavShoesBar = () => {
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setUser(null);
-    navigate("/Signup");
+    navigate("/");
   };
 
   // go to admin or userdashboard

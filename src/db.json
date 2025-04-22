@@ -153,6 +153,17 @@
       "contact": "7987725298",
       "address": "bagonoya",
       "price": 5000
+    },
+    {
+      "id": "96a5",
+      "name": "Vijay Meena",
+      "email": "vizaymeena@gmail.com",
+      "shoeName": "Puma RS-X",
+      "shoeSize": 8,
+      "quantity": 1,
+      "contact": "kdksd",
+      "address": "ds",
+      "price": 11110
     }
   ]
 }
