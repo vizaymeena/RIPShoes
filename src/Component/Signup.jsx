@@ -117,13 +117,11 @@ let SignUp = () => {
     navigate("/Login");
   }
 
-  let Go2Login = () => {
-    navigate2Login("/Login");
-  }
 
 
 
   return (
+    <>
     <div className="signContainer">
       <div className="formContainer">
         <h2 className="formTitle">Sign Up</h2>
@@ -155,12 +153,13 @@ let SignUp = () => {
 
           <div className="Buttons">
             <button type="submit" className="submitBtn">Sign Up</button>
-            <button onClick={Go2Login} className="loginButton" type="button">Login</button>
+            
           </div>
 
         </form>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 // import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
 import "./Component.css";
 
@@ -57,39 +58,50 @@ export const Hit = () => {
 // Hero Section Component
 
 export let HeroSection = () => {
-  const [selectedSize, setSelectedSize] = useState({});
-  const navigate = useNavigate();
+  let [selectedSize, setSelectedSize] = useState({});
+  let navigate = useNavigate();
 
-  const shoes = [
+  let shoes = [
     { id: 1, name: "Nike RED VELVET", img: newRed, sizes: [6, 7, 8], price: 5000 },
     { id: 2, name: "NIKE's JAGUAR", img: goldenshoe2, sizes: [6, 7, 8], price: 6000 },
     { id: 3, name: "NIKE's WHITE TIGER", img: goldenshoe3, sizes: [6, 7, 8], price: 5500 }
   ];
 
-  const handleShopNow = (shoe) => {
-   
-    const isLoggedIn = localStorage.getItem('loggedInUser')
-    if(isLoggedIn){
-      const size = selectedSize[shoe.id] || shoe.sizes[0];
-
-      navigate('/Receipt', { state: 
-        { 
-         shoeName: shoe.name, 
-         shoeSize: size, 
-         price: shoe.price 
-        } 
+  let handleShopNow = (shoe) => {
+    let isLoggedIn = localStorage.getItem('loggedInUser');
+    let size = selectedSize[shoe.id] || shoe.sizes[0];
+  
+    if (isLoggedIn) {
+      let user = JSON.parse(isLoggedIn);
+      let name = user.name;
+      let email = user.email;
+  
+      navigate('/receipt', {
+        state: {
+          name,
+          email,
+          shoeName: shoe.name,
+          price: shoe.price,
+          shoeSize: size,
+        }
       });
-
-    } else{
-      alert('please login first in order to proceed further')
-      navigate('/login')
+    } else {
+      sessionStorage.setItem("pendingPurchase", JSON.stringify({
+        shoeName: shoe.name,
+        price: shoe.price,
+        shoeSize: size
+      }));
+  
+      alert("Please login first.");
+      navigate('/login');
     }
-   
   };
+  
 
-  const handleSizeChange = (shoeId, size) => {
-    setSelectedSize((prev) => ({ ...prev, [shoeId]: size }));
-  };
+  let handleSizeChange = (shoeId, size) => {
+    setSelectedSize((prev) => ({ ...prev, [shoeId]: size }))
+  }
+
 
   return (
     <>
@@ -124,9 +136,9 @@ export let HeroSection = () => {
 };
 
 // Hero Section 2 Component
-export const HeroSection2 = () => {
-  const [selectedSize, setSelectedSize] = useState({});
-  const navigate = useNavigate();
+export let HeroSection2 = () => {
+  let [selectedSize, setSelectedSize] = useState({});
+  let navigate = useNavigate();
 
   const shoes = [
     { id: 1, name: "Nike Air Max", description: "Comfortable running shoes.", price: 4999, sizes: [6, 7, 8], image: Nike },
@@ -134,21 +146,39 @@ export const HeroSection2 = () => {
     { id: 3, name: "Puma Runner", description: "Casual wear shoes.", price: 3999, sizes: [6, 7, 8], image: Puma }
   ];
 
-  const handleBuyNow = (shoe) => {
-    const isLoggedIn = localStorage.getItem('loggedInUser')
-    if(isLoggedIn){
-      const size = selectedSize[shoe.id] || shoe.sizes[0];
-      navigate('/Receipt', { state: { shoeName: shoe.name, shoeSize: size, price: shoe.price } });
-      
-    } else{
-      alert('please login first in order to proceed further')
-      navigate('/login')
+  let handleBuyNow = (shoe) => {
+    let isLoggedIn = localStorage.getItem('loggedInUser');
+    let size = selectedSize[shoe.id] || shoe.sizes[0];
+  
+    if (isLoggedIn) {
+      let user = JSON.parse(isLoggedIn);
+      let name = user.name;
+      let email = user.email;
+  
+      navigate('/receipt', {
+        state: {
+          name,
+          email,
+          shoeName: shoe.name,
+          price: shoe.price,
+          shoeSize: size,
+        }
+      });
+    } else {
+      sessionStorage.setItem("pendingPurchase", JSON.stringify({
+        shoeName: shoe.name,
+        price: shoe.price,
+        shoeSize: size
+      }));
+  
+      alert("Please login first.");
+      navigate('/login');
     }
-  };
-
-  const handleSizeChange = (shoeId, size) => {
+  }
+  let handleSizeChange = (shoeId, size) => {
     setSelectedSize((prev) => ({ ...prev, [shoeId]: size }));
   };
+
 
   return (
     <section className="heroSection2Container">
@@ -193,7 +223,7 @@ export const AboutShoes = () => {
   ];
 
   return (
-    <section className="aboutSection">
+    <section id="aboutSection">
       <h2>About Us</h2>
       <div className="aboutContainer">
         {aboutData.map((item) => (

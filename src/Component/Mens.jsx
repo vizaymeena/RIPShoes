@@ -41,14 +41,14 @@ export const MenShoes = () => {
           shoeName: shoe.name,
           price: shoe.price,
           shoeSize: size,
+
         }
       });
     } else {
-      
-      sessionStorage.setItem("pendingPurchase", JSON.stringify({
+        sessionStorage.setItem("pendingPurchase", JSON.stringify({
         shoeName: shoe.name,
         price: shoe.price,
-        shoeSize: size,
+        shoeSize: size
       }));
   
       alert("Please login first.");

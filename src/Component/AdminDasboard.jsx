@@ -1,73 +1,77 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Dashboard.css';
+import { useNavigate } from 'react-router-dom';
+import './dashboard.css';
 
-export const AdminDashboard = () => {
-  const [purchases, setPurchases] = useState([]);
+const AdminDashboard = () => {
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-    if (!loggedInUser || loggedInUser.role !== 'admin') {
-      alert('Access Denied! Only Admin can view this page.');
+    const loggedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (!loggedUser || loggedUser.role !== 'admin') {
+      navigate('/');
       return;
     }
-    fetchPurchases();
-  }, []);
 
-  const fetchPurchases = () => {
-    
-     axios.get('http://localhost:3000/purchases')
-      .then((res) => {
-        // Ensure that the data is an array
-        if (Array.isArray(res.data)) {
-          setPurchases(res.data);
-        } else {
-          console.error('Error: Purchases data is not an array.');
-        }
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the fetch
-        console.error('Error fetching purchases:', error);
-      });
+    axios.get('http://localhost:3000/purchases')
+      .then(res => setUsers(res.data))
+      .catch(err => console.error('Error fetching purchases:', err));
+  }, [navigate]);
+
+  // Delete user
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      axios.delete(`http://localhost:3000/purchases/${id}`)
+        .then(() => {
+          setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
+        })
+        .catch(err => console.error("Delete failed", err));
+    }
+  };
+
+  // Edit user
+  const handleEdit = (user) => {
+    navigate('/EditByAdmin', { state: user });
   };
 
   return (
-    <div className="dashboard-container">
-      <h2>All User Purchases (Admin View)</h2>
-      {purchases.length > 0 ? (
-        <div className="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Shoe Name</th>
-                <th>Shoe Size</th>
-                <th>Quantity</th>
-                <th>Contact</th>
-                <th>Address</th>
-                <th>Price (₹)</th>
+    <div className="adminContainer">
+      <h2 className="adminTitle">Admin Dashboard</h2>
+      <div className="tableWrapper">
+        <table className="adminTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Shoe</th>
+              <th>Size</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map(user => (
+              <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.shoeName}</td>
+                <td>{user.shoeSize}</td>
+                <td>{user.quantity}</td>
+                <td>₹{user.price || 0}</td>
+                <td>
+                  <button className="editBtn" onClick={() => handleEdit(user)}>Edit</button>
+                  <button className="deleteBtn" onClick={() => handleDelete(user.id)}>Delete</button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {purchases.map((purchase, index) => (
-                <tr key={index}>
-                  <td>{purchase?.name || 'N/A'}</td>
-                  <td>{purchase?.email || 'N/A'}</td>
-                  <td>{purchase?.shoeName || 'N/A'}</td>
-                  <td>{purchase?.shoeSize || 'N/A'}</td>
-                  <td>{purchase?.quantity || 'N/A'}</td>
-                  <td>{purchase?.contact || 'N/A'}</td>
-                  <td>{purchase?.address || 'N/A'}</td>
-                  <td>{purchase?.price || 'N/A'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <p>No purchases available.</p>
-      )}
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
+
+export default AdminDashboard;

@@ -41,44 +41,30 @@ export let UserPurchases = () => {
 
   return (
     <div className="purchaseContainer">
-      <h2>Your Recent Purchase</h2>
-      {purchases.length > 0 ? (
-        <table className="purchaseTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Shoe Name</th>
-              <th>Shoe Size</th>
-              <th>Quantity</th>
-              <th>Contact</th>
-              <th>Address</th>
-              <th>Price (₹)</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {purchases.map((purchase, index) => (
-              <tr key={index}>
-                <td>{purchase.name}</td>
-                <td>{purchase.email}</td>
-                <td>{purchase.shoeName}</td>
-                <td>{purchase.shoeSize}</td>
-                <td>{purchase.quantity}</td>
-                <td>{purchase.contact}</td>
-                <td>{purchase.address}</td>
-                <td>{purchase.price}</td>
-                <td className='Buttons'>
-                  <button className='editButton' onClick={() => handleEdit(purchase)}>Edit</button>
-                  <button className='cancelButton' onClick={() => handleDelete(purchase?.id)}>Cancel</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p className="noData">No recent purchase found for your account</p>
-      )}
-    </div>
+    <h2>Your Recent Purchase</h2>
+    {purchases.length > 0 ? (
+      <div className="cardGrid">
+        {purchases.map((purchase, index) => (
+          <div className="purchaseCard" key={index}>
+            <p><strong>Name:</strong> {purchase.name}</p>
+            <p><strong>Email:</strong> {purchase.email}</p>
+            <p><strong>Shoe Name:</strong> {purchase.shoeName}</p>
+            <p><strong>Shoe Size:</strong> {purchase.shoeSize}</p>
+            <p><strong>Quantity:</strong> {purchase.quantity}</p>
+            <p><strong>Contact:</strong> {purchase.contact}</p>
+            <p><strong>Address:</strong> {purchase.address}</p>
+            <p><strong>Price (₹):</strong> {purchase.price}</p>
+            <div className="buttonGroup">
+              <button className="editButton" onClick={() => handleEdit(purchase)}>Edit</button>
+              <button className="cancelButton" onClick={() => handleDelete(purchase?.id)}>Cancel</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p className="noData">No recent purchase found for your account</p>
+    )}
+  </div>
+  
   );
 };

@@ -42,22 +42,23 @@ export let KidosSection = () => {
 
   // Handle Buy Now
   let handleBuyNow = (shoe) => {
-    let isLoggedIn = localStorage.getItem('loggedInUser')
+    const isLoggedIn = localStorage.getItem('loggedInUser');
+    const size = selectedSize[shoe.id] || shoe.sizes[0];
+  
     if (isLoggedIn) {
       navigate('/receipt', {
         state: {
           shoeName: shoe.name,
           price: shoe.price,
           shoeSize: size,
+
         }
       });
-    } 
-    else {
-      
-      sessionStorage.setItem("pendingPurchase", JSON.stringify({
+    } else {
+        sessionStorage.setItem("pendingPurchase", JSON.stringify({
         shoeName: shoe.name,
         price: shoe.price,
-        shoeSize: size,
+        shoeSize: size
       }));
   
       alert("Please login first.");

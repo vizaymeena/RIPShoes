@@ -24,58 +24,12 @@
   ],
   "purchases": [
     {
-      "id": "101",
-      "userId": 2,
-      "Quantity": 2,
-      "product": "Nike",
-      "ShoeSIze": 5,
-      "Contact": 124,
-      "Address": "Bagoniya",
-      "price": 35000
-    },
-    {
-      "id": "34a5",
-      "name": "vijaymeena",
-      "email": "vizaymeena@gmail.com",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": "5",
-      "contact": "7987725298",
-      "address": "bagoniya",
-      "price": ""
-    },
-    {
-      "id": "efa3",
-      "name": "jatin",
-      "email": "jatin@gmail.com",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": "2",
-      "contact": "121",
-      "address": "bagonoya",
-      "price": null
-    },
-    {
-      "id": "6796",
-      "name": "himanshu",
-      "email": "himanshu@gmail.com",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": "1",
-      "contact": "7987725298",
-      "address": "bagonoya",
-      "price": null
-    },
-    {
-      "id": "a8b8",
-      "name": "ragini goswami",
+      "name": "ragini goswamiii",
       "email": "raginigoswami@gmail.com",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": 1,
       "contact": "09887161",
       "address": "bhopal",
-      "price": null
+      "quantity": 1,
+      "id": "a8b8"
     },
     {
       "id": "6708",

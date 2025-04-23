@@ -11,8 +11,11 @@ export const Money = () => {
 
   let { shoeName, shoeSize, price: basePrice } = location.state || {};
   
-  let {name,email}= location.state || {}
-  console.log(name)
+  // let {name,email}= location.state || {}
+  let name = (location.state && location.state.name) || localStorage.getItem("name") || "";
+  let email = (location.state && location.state.email) || localStorage.getItem("email") || "";
+
+  // console.log(name)
 
   
   let [fetch, setFetch] = useState({

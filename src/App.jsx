@@ -14,8 +14,10 @@ import { UserPurchases } from "./Component/Purchases";
 import { EditForm } from "./Component/EditPurchase";
 
 // Dashboards
-import { AdminDashboard } from "./Component/AdminDasboard";
+import AdminDashboard from "./Component/AdminDasboard";
 import { UserDashboard } from "./Component/UserDasboard";
+
+import EditByAdmin from "./Component/EditByAdmin";
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
         </Route>
 
       
-
+        <Route path="EditByAdmin" element ={<EditByAdmin/>} />
         {/* Receipt and Purchases */}
         <Route path="Receipt" element={<Money />} />
         <Route path="Purchases" element={<UserPurchases />} />

@@ -17,49 +17,50 @@ let LogIn = () => {
 
   let FinalLogin = async (e) => {
     e.preventDefault()
-
     if (!letLogin.username.trim() || !letLogin.password.trim()) {
       alert("Email and Password are required.")
       return;
     }
 
-    try {
-      let res = await axios.get("http://localhost:3000/users")
-      let users = res.data
+    // get method 
+    let res = await axios.get("http://localhost:3000/users")
+    let users = res.data
 
+    // check for existing user
     let matchedUser = users.find(
         (obj) =>
           obj.email === letLogin.username && obj.password === letLogin.password
       );
 
       if (!matchedUser) {
-        alert("Invalid Email or Password")
+        alert("not a valid Email")
         return
       }
 
       localStorage.setItem("loggedInUser", JSON.stringify(matchedUser))
-      alert("Login Successful!")
+      alert("successfully login")
 
       // getting values to send and display it on specific fields on reciept page
       let pendingPurchase = sessionStorage.getItem("pendingPurchase")
       let userInfo = {name:matchedUser.name,email:matchedUser.email}
+
          console.log(userInfo)
+         
       if (pendingPurchase) {
         let data = JSON.parse(pendingPurchase)
         sessionStorage.removeItem("pendingPurchase")
         
         navigate("/receipt", { state: {...data,...userInfo} })
-      } else {
-        navigate("/");
+      } 
+      else {
+        navigate("/",{state:userInfo})
+        window.location.reload()
       }
-
-    } catch (err) {
-      console.error("Login error:", err)
-      alert("Login failed. Try again later.")
-    }
-  }
+    } 
+  
 
   return (
+    <>
     <div className="LoginContainer">
       <h2>USER LOGIN</h2>
       <form onSubmit={FinalLogin}>
@@ -79,7 +80,8 @@ let LogIn = () => {
         </div>
       </form>
     </div>
-  );
-};
+    </>
+ )
+}
 
 export default LogIn;

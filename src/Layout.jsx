@@ -4,20 +4,22 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 // Navbar Icons
-import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
+import { FaHome, FaMale, FaFemale, FaChild, FaUser } from "react-icons/fa";
 
 
 // Navbar Component
 export let NavShoesBar = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")) || null);
-  const navigate = useNavigate();
+  let [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")) || null);
+  let navigate = useNavigate();
 
   useEffect(() => {
-    const handleStorageChange = () => {
+    let handleStorageChange = () => {
       setUser(JSON.parse(localStorage.getItem("loggedInUser")) || null);
-    };
+    }
+
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
+    
   }, []);
 
   const handleLogout = () => {
@@ -57,7 +59,11 @@ export let NavShoesBar = () => {
           <button onClick={handleLogout} className="logoutBtn">Logout</button>
         </div>
       ) : (
-        <Link className="magicLink" to="/Signup"><FaUser /> Signup</Link>
+        <div>
+           <Link className="magicLink" to="/login"><FaUser /> Login </Link>
+           <Link className="magicLink" to="/Signup"><FaUser /> Signup</Link>
+       
+        </div>
       )}
     </nav>
 
