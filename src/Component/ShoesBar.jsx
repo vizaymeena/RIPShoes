@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-// import { FaHome, FaMale, FaFemale, FaChild, FaInfoCircle, FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 import "./Component.css";
 
 // Images
@@ -140,7 +139,7 @@ export let HeroSection2 = () => {
   let [selectedSize, setSelectedSize] = useState({});
   let navigate = useNavigate();
 
-  const shoes = [
+  let shoes = [
     { id: 1, name: "Nike Air Max", description: "Comfortable running shoes.", price: 4999, sizes: [6, 7, 8], image: Nike },
     { id: 2, name: "Adidas UltraBoost", description: "Premium sports shoes.", price: 6999, sizes: [6, 7, 8], image: Addidas },
     { id: 3, name: "Puma Runner", description: "Casual wear shoes.", price: 3999, sizes: [6, 7, 8], image: Puma }

@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './Table.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import './Table.css'
+import { useNavigate } from 'react-router-dom'
 
 export let UserPurchases = () => {
-  const [purchases, setPurchases] = useState([]);
-  const userEmail = localStorage.getItem('userEmail') || '';
-  const navigate = useNavigate();
+  let [purchases, setPurchases] = useState([]);
+  let userEmail = localStorage.getItem('userEmail') || ''
+  let navigate = useNavigate();
 
 
-  const fetchData = () => {
+  let fetchData = () => {
     axios.get('http://localhost:3000/purchases')
       .then((res) => {
         if (res.data.length > 0) {
-          const lastPurchase = res.data[res.data.length - 1];
-          setPurchases([lastPurchase]); // storing last entry as an array
+          const lastPurchase = res.data[res.data.length - 1]
+          setPurchases([lastPurchase]) // storing last entry as an array
         }
       })
       
@@ -24,23 +24,27 @@ export let UserPurchases = () => {
     fetchData();
   }, []);
 
-  // Handle Delete
-  const handleDelete = (id) => {
+  // handle delete
+  let handleDelete = (id) => {
     axios.delete(`http://localhost:3000/purchases/${id}`)
       .then(() => {
         setPurchases([]);
-        alert("order has been cancelled successfully");
+        alert("order has been cancelled successfully")
       })
     }
      
 
-  // Navigate to Edit Form
-  const handleEdit = (purchase) => {
-    navigate('/EditPurchase', { state: purchase });
+  // navigate to this form
+  let handleEdit = (purchase) => {
+    navigate('/EditPurchase', { state: purchase })
   };
+  let homeButton=(e)=>{
+    navigate('/')
+  }
 
   return (
     <div className="purchaseContainer">
+      <div><button onClick={homeButton} style={{backgroundColor:'black',padding:'10px',borderRadius:'20px',color:'white'}}>Back to Home</button></div>
     <h2>Your Recent Purchase</h2>
     {purchases.length > 0 ? (
       <div className="cardGrid">

@@ -10,7 +10,7 @@ import ws7 from '../assets/Images/Ws7.jpg';
 
 export default function WomenShoe() {
   let navigate = useNavigate();
-  let [selectedOptions, setSelectedOptions] = useState({});
+  let [selectedSize, setSelectedSize] = useState({});
 
   let shoes = [
     { id: 1, name: "Stylish Heels", price: 11120, colors: ["Red", "Black"], sizes: ["6", "7", "8"], image: ws1 },
@@ -23,7 +23,7 @@ export default function WomenShoe() {
   ];
 
   let handleSelectChange = (shoeId, type, value) => {
-    setSelectedOptions((prev) => ({
+    setSelectedSize((prev) => ({
       ...prev,
       [shoeId]: { ...prev[shoeId], [type]: value },
     }));
@@ -32,12 +32,16 @@ export default function WomenShoe() {
   let handleBuyNow = (shoe) => {
    
     
-    const isLoggedIn = localStorage.getItem('loggedInUser');
-    const size = selectedSize[shoe.id] || shoe.sizes[0];
+    let isLoggedIn = localStorage.getItem('loggedInUser');
+    let size = selectedSize[shoe.id] || shoe.sizes[0];
+
+    let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));  
   
     if (isLoggedIn) {
       navigate('/receipt', {
         state: {
+          name:loggedInUser.name,
+          email:loggedInUser.email,
           shoeName: shoe.name,
           price: shoe.price,
           shoeSize: size,
@@ -74,7 +78,7 @@ export default function WomenShoe() {
               <label>Size: </label>
               <select className='ShoeSize'
                 onChange={(e) => handleSelectChange(shoe.id, 'size', e.target.value)}
-                value={selectedOptions[shoe.id]?.size || shoe.sizes[0]}
+                value={selectedSize[shoe.id]?.size || shoe.sizes[0]}
               >
                 {shoe.sizes.map((size) => (
                   <option key={size} value={size}>{size}</option>
@@ -85,7 +89,7 @@ export default function WomenShoe() {
               <label>Color: </label>
               <select
                 onChange={(e) => handleSelectChange(shoe.id, 'color', e.target.value)}
-                value={selectedOptions[shoe.id]?.color || shoe.colors[0]}
+                value={selectedSize[shoe.id]?.color || shoe.colors[0]}
               >
                 {shoe.colors.map((color) => (
                   <option key={color} value={color}>{color}</option>

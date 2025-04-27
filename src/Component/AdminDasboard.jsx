@@ -3,12 +3,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css';
 
-const AdminDashboard = () => {
-  const [users, setUsers] = useState([]);
-  const navigate = useNavigate();
+let AdminDashboard = () => {
+  let [users, setUsers] = useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
-    const loggedUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    let loggedUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
     if (!loggedUser || loggedUser.role !== 'admin') {
       navigate('/');
@@ -17,22 +17,21 @@ const AdminDashboard = () => {
 
     axios.get('http://localhost:3000/purchases')
       .then(res => setUsers(res.data))
-      .catch(err => console.error('Error fetching purchases:', err));
   }, [navigate]);
 
   // Delete user
-  const handleDelete = (id) => {
+  let handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       axios.delete(`http://localhost:3000/purchases/${id}`)
         .then(() => {
-          setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
+          setUsers(pu => pu.filter(inx => inx.id !== id))
         })
-        .catch(err => console.error("Delete failed", err));
+       
     }
   };
 
   // Edit user
-  const handleEdit = (user) => {
+  let handleEdit = (user) => {
     navigate('/EditByAdmin', { state: user });
   };
 

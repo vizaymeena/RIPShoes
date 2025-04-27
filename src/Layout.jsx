@@ -28,19 +28,21 @@ export let NavShoesBar = () => {
     navigate("/");
   };
 
-  // go to admin or userdashboard
-  const DashBoard= () => {
-    if (user) {
-      if (user.role === "admin") {
-        navigate("/AdminDasboard")
-      } else {
-        navigate("/UserDasboard")
-      }
-    } else {
+  let DashBoard = () => {
+  
+      let user = JSON.parse(localStorage.getItem('loggedInUser'));
       
-      navigate("/Login");
-    }
-  };
+        if (user.role === 'admin') {
+          navigate('/AdminDasboard');
+        } 
+        else {
+          navigate('/UserDasboard');
+        }
+        
+    
+  
+
+  }
 
   return (
     <>

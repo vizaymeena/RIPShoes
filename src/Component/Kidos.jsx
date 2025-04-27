@@ -42,12 +42,16 @@ export let KidosSection = () => {
 
   // Handle Buy Now
   let handleBuyNow = (shoe) => {
-    const isLoggedIn = localStorage.getItem('loggedInUser');
-    const size = selectedSize[shoe.id] || shoe.sizes[0];
+    let isLoggedIn = localStorage.getItem('loggedInUser');
+    let size = selectedSize[shoe.id] || shoe.sizes[0];
+
+    let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));  
   
     if (isLoggedIn) {
       navigate('/receipt', {
         state: {
+          name:loggedInUser.name,
+          email:loggedInUser.email,
           shoeName: shoe.name,
           price: shoe.price,
           shoeSize: size,
@@ -78,7 +82,7 @@ export let KidosSection = () => {
             <h3>{shoe.name}</h3>
             <p>Price: ₹{shoe.price}</p>
 
-            {/* Shoe Size Selection */}
+           
             <label>Shoe Size:</label>
             <select className='ShoeSize' onChange={(e) => handleSizeChange(shoe.id, e.target.value)} value={selectedSize[shoe.id] || shoe.sizes[0]}>
               {shoe.sizes.map((size) => (
@@ -86,7 +90,7 @@ export let KidosSection = () => {
               ))}
             </select>
 
-            {/* Buy Now Button */}
+            
             <button onClick={() => handleBuyNow(shoe)}>Shop Now</button>
           </div>
         ))}

@@ -34,7 +34,7 @@ function App() {
           <Route path="Login" element={<LogIn />} />
         </Route>
 
-      
+           
         <Route path="EditByAdmin" element ={<EditByAdmin/>} />
         {/* Receipt and Purchases */}
         <Route path="Receipt" element={<Money />} />

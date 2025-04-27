@@ -24,36 +24,6 @@
   ],
   "purchases": [
     {
-      "name": "ragini goswamiii",
-      "email": "raginigoswami@gmail.com",
-      "contact": "09887161",
-      "address": "bhopal",
-      "quantity": 1,
-      "id": "a8b8"
-    },
-    {
-      "id": "6708",
-      "name": "Vijay Meena",
-      "email": "vizaymeena@gmail.com",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": 10,
-      "contact": "9283823912",
-      "address": "bhopal",
-      "price": null
-    },
-    {
-      "id": "e9fc",
-      "name": "Allu Arjun",
-      "email": "rajpatidar@gmail.com",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": 1,
-      "contact": "7987725298",
-      "address": "bagonoya",
-      "price": null
-    },
-    {
       "id": "7319",
       "name": "Vijay Dinnnanath Chouhan",
       "email": "vizaymeena@gmail.com",
@@ -63,17 +33,6 @@
       "contact": "100",
       "address": "Bhopal",
       "price": 5000
-    },
-    {
-      "id": "2871",
-      "name": "Vijay",
-      "email": "vizaymeena@gmail.com",
-      "shoeName": "",
-      "shoeSize": "",
-      "quantity": "1",
-      "contact": "12",
-      "address": "12",
-      "price": 0
     },
     {
       "id": "b77f",
@@ -118,6 +77,39 @@
       "contact": "kdksd",
       "address": "ds",
       "price": 11110
+    },
+    {
+      "id": "e60e",
+      "name": "Himanshu",
+      "email": "himanshu@gmail.com",
+      "shoeName": "Nike RED VELVET",
+      "shoeSize": 6,
+      "quantity": "1",
+      "contact": "7987725298",
+      "address": "Rewa",
+      "price": 5000
+    },
+    {
+      "id": "5a42",
+      "name": "Ajay",
+      "email": "vizaymeena@gmail.com",
+      "shoeName": "NIKE's JAGUAR",
+      "shoeSize": 6,
+      "quantity": "4",
+      "contact": "7987725298",
+      "address": "Bhopal",
+      "price": 12000
+    },
+    {
+      "id": "0e5b",
+      "name": "Himanshu",
+      "email": "himanshu@gmail.com",
+      "shoeName": "Nike Air Max",
+      "shoeSize": 7,
+      "quantity": "3",
+      "contact": "7987725298",
+      "address": "Bhopal",
+      "price": 33360
     }
   ]
 }

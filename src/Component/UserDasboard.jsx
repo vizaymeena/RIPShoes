@@ -1,60 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './Dashboard.css'
 
 export let UserDashboard = () => {
-  const [purchases, setPurchases] = useState([]);
-  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+  let [purchases, setPurchases] = useState([]);
+  let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   useEffect(() => {
+
     if (!loggedInUser) {
       alert('Please login first.');
       return;
     }
-    fetchUserPurchases();
-  }, []);
 
-  const fetchUserPurchases =  () => {
-    
-      const res =  axios.get('http://localhost:3000/purchases');
-      const userPurchases = res.data.filter((p) => p.email === loggedInUser.email);
-      setPurchases(userPurchases)
-   
-  };
+    let userPurchases = async () => {
+     
+        let res = await axios.get('http://localhost:3000/purchases');
+        let userPurchases = res.data.filter(
+          (p) => p.email === loggedInUser.email
+        )
+        setPurchases(userPurchases);
+      } 
+
+    userPurchases();
+  }, [loggedInUser]);
 
   return (
-    <div className="dashboard-container">
-      <h2>Your Purchases</h2>
+    <div className="dContainer">
+      <h2 className="dHeading">Your Purchases</h2>
       {purchases.length > 0 ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Shoe Name</th>
-              <th>Shoe Size</th>
-              <th>Quantity</th>
-              <th>Contact</th>
-              <th>Address</th>
-              <th>Price (₹)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {purchases.map((bought, index) => (
-              <tr key={index}>
-                <td>{bought?.name}</td>
-                <td>{bought?.email}</td>
-                <td>{bought?.shoeName}</td>
-                <td>{bought?.shoeSize}</td>
-                <td>{bought?.quantity}</td>
-                <td>{bought?.contact}</td>
-                <td>{bought?.address}</td>
-                <td>{bought?.price || 'N/A'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="cGrid">
+          {purchases.map((item, index) => (
+            <div key={index} className="pCard">
+              <h3 className="sName">{item.shoeName}</h3>
+              <p><strong>Size:</strong> {item.shoeSize}</p>
+              <p><strong>Quantity:</strong> {item.quantity}</p>
+              <p><strong>Price:</strong> ₹{item.price || 'N/A'}</p>
+              <hr />
+              <p><strong>Name:</strong> {item.name}</p>
+              <p><strong>Email:</strong> {item.email}</p>
+              <p><strong>Contact:</strong> {item.contact}</p>
+              <p><strong>Address:</strong> {item.address}</p>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p>No purchases found for your account.</p>
+        <p className="nPurchases">No purchases found for your account.</p>
       )}
     </div>
   );

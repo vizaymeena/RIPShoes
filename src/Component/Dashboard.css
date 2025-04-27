@@ -1,3 +1,5 @@
+
+/* admindashboard */
 .adminContainer {
   padding: 2rem;
   max-width: 100%;
@@ -52,4 +54,66 @@
     padding: 0.5rem;
     font-size: 0.85rem;
   }
+}
+
+
+/* userdashboard */
+
+.dContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.dHeading {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.cGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.pCard {
+  background-color: #b2b6b6;
+  border: 1px solid #701a1a;
+  border-radius: 16px;
+  padding: 20px;
+  color: #888;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.pCard:hover {
+  transform: translateY(-5px);
+}
+
+.sName {
+  font-size: 20px;
+  color: #07237f;
+  margin-bottom: 10px;
+}
+
+.pCard p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #6555b4;
+}
+
+.pCard hr {
+  margin: 10px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.nPurchases {
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+  margin-top: 20px;
 }

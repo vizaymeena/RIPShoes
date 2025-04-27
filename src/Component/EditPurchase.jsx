@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import './Table.css'; // Importing CSS
+import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import './Table.css'
 
-export const EditForm = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { state } = location;
+export let EditForm = () => {
+  let location = useLocation();
+  let navigate = useNavigate();
+  let { state } = location;
   
-  const [formData, setFormData] = useState(state);
+  let [formData, setFormData] = useState(state);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  let handleChange = (e) => {
+    let { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  let handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:3000/purchases/${formData.id}`, formData);
@@ -38,7 +38,7 @@ export const EditForm = () => {
 
         <div className="form-group">
           <label>Shoe Name</label>
-          <input type="text" name="shoeName" value={formData.shoeName} onChange={handleChange} />
+          <input type="text" name="shoeName" value={formData.shoeName} onChange={handleChange}  readOnly/>
         </div>
 
         <div className="form-row">
@@ -65,13 +65,13 @@ export const EditForm = () => {
 
         <div className="form-group">
           <label>Price (₹)</label>
-          <input type="text" name="price" value={formData.price} onChange={handleChange} />
+          <input type="text" name="price" value={formData.price} onChange={handleChange} readOnly />
         </div>
 
         <button type="submit" className="update-btn">Update</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
 

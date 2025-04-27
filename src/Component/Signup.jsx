@@ -1,6 +1,7 @@
 import "./FormStyles.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 let SignUp = () => {
   let [user, setUser] = useState({
@@ -24,7 +25,11 @@ let SignUp = () => {
   let navigate = useNavigate();
   let navigate2Login = useNavigate();
 
-  // handle input changes
+  axios.get("http://localhost:3000/purchases")
+  .then(res => data = res.data)
+
+  
+  
   let inpChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -37,7 +42,7 @@ let SignUp = () => {
 
     // name validation
     if (name === "name") {
-      if (value.length < 2 || value.length > 30) {
+      if (value.length < 4 || value.length > 16) {
         err.name = "Name should be between 2 and 30 characters.";
       } 
       else if (!/^[A-Za-z ]+$/.test(value)) {
@@ -51,14 +56,20 @@ let SignUp = () => {
     else if (name === "username") {
       if (value === "") {
         err.username = "Email is required.";
+    
       } 
       else if (!value.includes("@") || !value.endsWith(".com")) {
         err.username = "Invalid email format."
+        
       } 
+      else if(value===isAvailable){
+        err.username="email already exits"
+      }
       else {
         err.username = ""
       }
     } 
+
     // password validation
     else if (name === "password") {
       if (value.length === 0) {

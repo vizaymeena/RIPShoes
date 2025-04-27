@@ -11,9 +11,9 @@ import men3 from '../assets/Kidos/Dmen3.jpg'
 import men4 from '../assets/Kidos/Dmen3.jpg'
 import men5 from '../assets/Kidos/Dmen3.jpg'
 
-export const MenShoes = () => {
-  const navigate = useNavigate();
-  const [selectedSize, setSelectedSize] = useState({});
+export let MenShoes = () => {
+  let navigate = useNavigate();
+  let [selectedSize, setSelectedSize] = useState({});
   
   const shoes = [
     { id: 1, name: 'Nike Air Max', description: 'Premium quality running shoes', price: 11120, image: air1, sizes: [7, 8, 9, 10] },
@@ -27,17 +27,21 @@ export const MenShoes = () => {
     { id: 4, name: 'Reebok Classic', description: 'Vintage style with a modern twist', price: 10100 , image: men5, sizes: [6, 7, 8, 9] },
   ];
 
-  const handleSizeChange = (shoeId, size) => {
+  let handleSizeChange = (shoeId, size) => {
     setSelectedSize((prev) => ({ ...prev, [shoeId]: size }));
   };
 
   const handleBuyNow = (shoe) => {
-    const isLoggedIn = localStorage.getItem('loggedInUser');
-    const size = selectedSize[shoe.id] || shoe.sizes[0];
+    let isLoggedIn = localStorage.getItem('loggedInUser');
+    let size = selectedSize[shoe.id] || shoe.sizes[0];
+    
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));  
   
     if (isLoggedIn) {
       navigate('/receipt', {
         state: {
+          name:loggedInUser.name,
+          email:loggedInUser.email,
           shoeName: shoe.name,
           price: shoe.price,
           shoeSize: size,
