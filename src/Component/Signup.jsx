@@ -28,8 +28,10 @@ let SignUp = () => {
   axios.get("http://localhost:3000/purchases")
   .then(res => data = res.data)
 
+  axios.get("http://localhost:3000/users")
+  .then(res=> isAvailable = res.data)
   
-  
+   
   let inpChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -62,8 +64,8 @@ let SignUp = () => {
         err.username = "Invalid email format."
         
       } 
-      else if(value===isAvailable){
-        err.username="email already exits"
+      else if (jsonData.some(user => user.username === email)) {
+        err.username = "Email already exists.";
       }
       else {
         err.username = ""
