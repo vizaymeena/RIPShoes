@@ -24,26 +24,20 @@
   ],
   "purchases": [
     {
-      "id": "7319",
-      "name": "Vijay Dinnnanath Chouhan",
+      "name": "Vijay Katarknak",
       "email": "vizaymeena@gmail.com",
-      "shoeName": "Nike RED VELVET",
-      "shoeSize": 6,
-      "quantity": "2",
-      "contact": "100",
+      "contact": "7987725298",
       "address": "Bhopal",
-      "price": 5000
+      "quantity": "3",
+      "id": "7319"
     },
     {
-      "id": "b77f",
       "name": "jatin",
       "email": "rajpatidar@gmail.com",
-      "shoeName": "Sporty Sneakers",
-      "shoeSize": "5",
-      "quantity": "0",
       "contact": "7987725298",
       "address": "sehore",
-      "price": 1200
+      "quantity": "2",
+      "id": "b77f"
     },
     {
       "id": "38b1",

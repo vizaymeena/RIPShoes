@@ -16,7 +16,7 @@ export let NavShoesBar = () => {
     let handleStorageChange = () => {
       setUser(JSON.parse(localStorage.getItem("loggedInUser")) || null);
     }
-
+    
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
     
